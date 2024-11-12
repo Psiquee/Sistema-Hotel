@@ -1,0 +1,1 @@
+En esta carpeta ira toda la logica para la conexion de la bbdd con el frontend

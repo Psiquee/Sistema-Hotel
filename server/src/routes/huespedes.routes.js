@@ -3,7 +3,7 @@ import { pool } from '../config/db.js';
 
 const router = Router();
 
-// Rutas de huespedes
+
 router.get('/huespedes', (req, res) => {
     res.send(' obtengo todos los huespedes');
 });

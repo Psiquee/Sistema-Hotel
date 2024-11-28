@@ -1,26 +1,19 @@
 import { Router } from "express";
-import { pool } from '../config/db.js';  
+import { obtenerReservas, obtenerReservaPorId, crearReserva, actualizarReserva, eliminarReserva } from "../controllers/reservas.controller.js";
+
 
 const router = Router();
 
 
-router.get('/reservas', (req, res) => {
-    res.send(' obtengo todas las reservas');
-});
-router.get('/reservas/:id', (req, res) => {
-    res.send('filtro las reservas x id');
-});
-router.post('/reservas', (req, res) => {
-    res.send('creo nueva reservas');
-});
+router.get('/reservas', obtenerReservas);
 
-router.put('/reservas/:id', (req, res) => {
-    res.send('actualizo la reserva x id');
-});
+router.get('/reservas/:id', obtenerReservaPorId);
 
-router.delete('/reservas/:id', (req, res) => {
-    res.send('elimino reserva x id');
-});
+router.post('/reservas', crearReserva);
+
+router.patch('/reservas/:id', actualizarReserva);
+
+router.delete('/reservas/:id', eliminarReserva);
 
 
 

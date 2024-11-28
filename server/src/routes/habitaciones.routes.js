@@ -1,26 +1,16 @@
 import { Router } from "express";
-import { pool } from '../config/db.js';  
+import { actualizarHabitacion, crearHabitacion, eliminarHabitacion, obtenerHabitaciones, obtenerHabitacionPorId } from "../controllers/habitaciones.controller.js"; 
 
 const router = Router();
 
-router.get('/habitaciones', (req, res) => {
-    res.send('obteniendo todas las habitaciones');
-});
+router.get('/habitaciones', obtenerHabitaciones);
 
-router.get('/habitaciones/:id', (req, res) => {
-    res.send('filtrando habitaciones x id');
-});
+router.get('/habitaciones/:id', obtenerHabitacionPorId);
 
-router.post('/habitaciones', (req, res) => {
-    res.send('creando habitacion');
-});
+router.post('/habitaciones', crearHabitacion);
 
-router.put('/habitaciones/:id', (req, res) => {
-    res.send('actualizando habitacion');
-});
+router.patch('/habitaciones/:id', actualizarHabitacion);
 
-router.delete('/habitaciones/:id', (req, res) => {
-    res.send('eliminando habitacion x id ');
-});
+router.delete('/habitaciones/:id', eliminarHabitacion );
 
 export default router;

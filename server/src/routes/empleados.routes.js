@@ -1,28 +1,17 @@
 import { Router } from "express";
-import { pool } from '../config/db.js';  
 
+import  {obtenerEmpleados, obtenerEmpleadoPorId, crearEmpleado, actualizarEmpleado, eliminarEmpleado}  from '../controllers/empleados.controller.js';
 const router = Router();
 
 
-router.get('/empleados', (req, res) => {
-    res.send('obteniendo empleados');
-});
+router.get('/empleados', obtenerEmpleados);
 
+router.get('/empleados/:id', obtenerEmpleadoPorId);
 
-router.get('/empleados/:id', (req, res) => {
-    res.send('obteniendo empleado x id');
-});
+router.post('/empleados', crearEmpleado);
 
-router.post('/empleados', (req, res) => {
-    res.send('creando empleado');
-});
+router.patch('/empleados/:id', actualizarEmpleado);
 
-router.put('/empleados/:id', (req, res) => {
-    res.send('actualizando empleado');
-});
-
-router.delete('/empleados/:id', (req, res) => {
-    res.send('eliminar empleado');
-});
+router.delete('/empleados/:id', eliminarEmpleado);
 
 export default router;

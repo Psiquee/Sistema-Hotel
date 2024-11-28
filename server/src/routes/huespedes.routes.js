@@ -1,32 +1,17 @@
-import { Router } from "express";
-import { pool } from '../config/db.js';  
+import { Router } from "express";  
+import { actualizarHuesped, eliminarHuesped, obtenerHuespedes, obtenerHuespedPorId, registrarHuesped } from "../controllers/huespedes.controller.js";
 
 const router = Router();
 
 
-router.get('/huespedes', (req, res) => {
-    res.send(' obtengo todos los huespedes');
-});
+router.get('/huespedes', obtenerHuespedes );
 
-router.get('/huespedes/:id', (req, res) => {
-    res.send(' obtengo todos los huespedes x id');
-});
+router.get('/huespedes/:id', obtenerHuespedPorId);
 
-router.post('/huespedes', (req, res) => {
-    res.send(' registro huespedes');
-});
+router.post('/huespedes', registrarHuesped);
 
+router.patch('/huespedes/:id', actualizarHuesped);
 
-router.put('/huespedes/:id', (req, res) => {
-    res.send(' actualizo huesped');
-});
-
-router.get('/huespedes/:id', (req, res) => {
-    res.send(' obtengo todos los huespedes x id');
-});
-
-router.delete('/huespedes/:id', (req, res) => {
-    res.send(' elimino huesped');
-});
+router.delete('/huespedes/:id', eliminarHuesped );
 
 export default router;

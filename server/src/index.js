@@ -1,11 +1,12 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { pool } from './config/db.js';
+
 import empleadosRoutes from './routes/empleados.routes.js'
 import habitacionesRoutes  from "./routes/habitaciones.routes.js";
 import huespedesRoutes from './routes/huespedes.routes.js';
 import reservasRoutes from './routes/reservas.routes.js';
 import pagosRoutes from './routes/pagos.routes.js';
+
 
 
 //  dotenv
@@ -22,32 +23,36 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/ping', async(req,res)=> {
-    const [result] = await pool.query('SELECT 1 + 1 AS result')
-    res.json(result)
-});
+
 
 // Definimos una ruta basica 
 app.get("/", (req, res) => {
-    res.status(200).end('Bienvenidos a la API del hotel!');
+    res.status(200).send('Bienvenidos a la API del hotel!');
 });
 
 
 // Rutas de empleados
-app.use(empleadosRoutes);
+app.use('/api', empleadosRoutes);
 
 // Rutas de habitaciones
-app.use(habitacionesRoutes);
+app.use('/api', habitacionesRoutes);
 
 // Rutas de huespedes
-app.use(huespedesRoutes);
+app.use('/api', huespedesRoutes);
 
 // Rutas de reservas
-app.use(reservasRoutes);
+app.use('/api', reservasRoutes);
 
 
 // Rutas de pagos
-app.use(pagosRoutes);
+app.use('/api', pagosRoutes);
+
+app.use((req, res, next) => {
+    res.status(404).json({
+        message: 'endpoint Not found'
+    });
+
+});
 
 
 

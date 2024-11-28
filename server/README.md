@@ -200,7 +200,7 @@ http://localhost:3000/api/habitaciones/202
 ```
 
 
-## DELETE de generos
+## DELETE de reservas
 La URL que nos permite eliminar un recurso existente
 ```py
 http://localhost:3000/reservas/53

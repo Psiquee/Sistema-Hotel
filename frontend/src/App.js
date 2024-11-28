@@ -1,19 +1,19 @@
 // App.js
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import NavigationBar from './components/Navbar';
-import GuestsList from './components/GuestsList';
-import GuestForm from './components/GuestForm';
-import EmployeesList from './components/EmployeesList';
-import EmployeeForm from './components/EmployeeForm';
-import ReservationsList from './components/ReservationsList';
-import ReservationForm from './components/ReservationForm';
-import PaymentsList from './components/PaymentsList';
-import PaymentForm from './components/PaymentForm';
-import RoomsList from './components/RoomsList';
-import RoomForm from './components/RoomForm';
-import Footer from './components/Footer';
-import './Styles.css';
+import NavigationBar from './components/layout/Navbar';
+import GuestsList from './components/huespedes/GuestsList';
+import GuestForm from './components/huespedes/GuestForm';
+import EmployeesList from './components/empleados/EmployeesList';
+import EmployeeForm from './components/empleados/EmployeeForm';
+import ReservationsList from './components/reservas/ReservationsList';
+import ReservationForm from './components/reservas/ReservationForm';
+import PaymentsList from './components/pagos/PaymentsList';
+import PaymentForm from './components/pagos/PaymentForm';
+import RoomsList from './components/habitaciones/RoomsList';
+import RoomForm from './components/habitaciones/RoomForm';
+import Footer from './components/layout/Footer';
+import './styles/Styles.css';
 function App() {
   return (
     <Router>

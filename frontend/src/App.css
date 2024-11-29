@@ -1,4 +1,13 @@
+/*App.css*/
 .App {
   text-align: center;
+  width: auto;
+  min-height: 100vh; /* Asegura que la altura mínima de la página cubra todo el contenido */
+  display: flex;
+  flex-direction: column; /* Alinea los elementos de forma vertical */
+
 }
 
+h2 {
+  color:rgb(141, 213, 236);
+}

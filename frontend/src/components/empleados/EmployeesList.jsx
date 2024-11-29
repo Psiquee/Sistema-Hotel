@@ -1,3 +1,4 @@
+//EmployeesList.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -20,6 +21,17 @@ const ListEmpleados = () => {
 
         fetchEmpleados();
     }, []);
+
+    const eliminarEmpleado = async (id_empleado) => {
+        try {
+            await axios.delete(`/api/empleados/${id_empleado}`);
+            // Filtrar el empleado eliminado de la lista
+            setEmpleados(empleados.filter(empleado => empleado.id_empleado !== id_empleado));
+            console.log(`Empleado con ID ${id_empleado} eliminado con éxito`);
+        } catch (error) {
+            console.error('Error al eliminar el empleado', error.response || error.message);
+        }
+    };
 
     if (loading) {
         return <div>Cargando empleados...</div>;
@@ -44,7 +56,7 @@ const ListEmpleados = () => {
                             <td>{empleado.nombre} {empleado.apellido}</td>
                             <td>{empleado.cargo}</td>
                             <td>
-                                <button >Eliminar</button>
+                                <button onClick={() => eliminarEmpleado(empleado.id_empleado)}>Eliminar</button>
                             </td>
                         </tr>
                     ))}

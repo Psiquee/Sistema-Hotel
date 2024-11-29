@@ -1,5 +1,6 @@
 // EmployeeForm.js
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function EmployeeForm() {
   const [formData, setFormData] = useState({
@@ -14,18 +15,23 @@ function EmployeeForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Aquí iría la lógica para enviar los datos al backend.
-    console.log('Datos del nuevo empleado:', formData);
-    // Resetear formulario después de enviar
-    setFormData({
-      nombre: '',
-      apellido: '',
-      cargo: '',
-      telefono: '',
-      email: ''
-    });
+    try {
+      // Hacer una solicitud POST para agregar el nuevo empleado
+      const response = await axios.post('/api/empleados', formData);
+      console.log('Empleado agregado con éxito', response.data);
+      // Resetear formulario después de enviar
+      setFormData({
+        nombre: '',
+        apellido: '',
+        cargo: '',
+        telefono: '',
+        email: ''
+      });
+    } catch (error) {
+      console.error('Error al agregar el empleado', error.response || error.message);
+    }
   };
 
   return (
@@ -42,3 +48,4 @@ function EmployeeForm() {
 }
 
 export default EmployeeForm;
+

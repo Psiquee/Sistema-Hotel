@@ -16,13 +16,32 @@ function GuestsList() {
   return (
     <div>
       <h2>Lista de Huéspedes</h2>
-      <ul>
-        {guests.map(guest => (
-          <li key={guest.id}>
-            {guest.name} - {guest.address} - {guest.phone} - {guest.email}
-          </li>
-        ))}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+      
+       
+            <tbody>
+              {guests.map(guest => (
+                <tr key={guest.id}>
+                  <td>{guest.id}</td>
+                  <td>{guest.name}</td>
+                  <td>{guest.address}</td>
+                  <td>{guest.phone}</td>
+                  <td>{guest.email}</td>
+                </tr>
+              )
+              )}
+            </tbody>
+        
+      </table>
     </div>
   );
 }

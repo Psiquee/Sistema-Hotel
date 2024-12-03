@@ -3,7 +3,7 @@
 import axios from 'axios';
 
 // Base URL de la API
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'http://localhost:3001/api';
 
 // Obtener todos los empleados
 export const getEmployees = async () => {

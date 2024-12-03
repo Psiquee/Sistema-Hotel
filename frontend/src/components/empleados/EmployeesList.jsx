@@ -1,4 +1,3 @@
-//EmployeesList.jsx
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getEmployees } from '../../api/empleadosApi';
@@ -16,7 +15,7 @@ const EmployeesList = () => {
                 setEmployees(data);
             } catch (error) {
                 console.error('Error al cargar empleados:', error);
-                alert('No se pudieron cargar los empleados.');
+                //alert('No se pudieron cargar los empleados.');
             } finally {
                 setLoading(false);
             }
@@ -35,13 +34,16 @@ const EmployeesList = () => {
     const handleDelete = async (id) => {
         const confirmDelete = window.confirm('¿Estás seguro de que deseas eliminar este empleado?');
         if (confirmDelete) {
+            setLoading(true); // Muestra un indicador de carga mientras elimina
             try {
-                await axios.delete(`http://localhost:5000/api/empleados/${id}`);
+                await axios.delete(`http://localhost:3001/api/empleados/${id}`);
                 setEmployees(employees.filter((employee) => employee.Id_empleado !== id));
                 alert('Empleado eliminado correctamente.');
             } catch (error) {
                 console.error('Error al eliminar el empleado:', error);
                 alert('Error al eliminar el empleado.');
+            } finally {
+                setLoading(false); // Oculta el indicador de carga una vez completado
             }
         }
     };

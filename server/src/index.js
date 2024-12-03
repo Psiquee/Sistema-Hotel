@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors'
 
 import empleadosRoutes from './routes/empleados.routes.js'
 import habitacionesRoutes  from "./routes/habitaciones.routes.js";
@@ -14,7 +15,8 @@ dotenv.config();
 
 // inicializacion express
 const app = express();
-const PORT = process.env.PORT || 3000;
+app.use(cors());
+const PORT = process.env.PORT || 3001;
 
 // middleware
 app.use(express.json());

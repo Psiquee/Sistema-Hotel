@@ -27,7 +27,7 @@ function RoomForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Agregar Nueva Habitación</h2>
+      <h2 Id="form-title">Agregar Nueva Habitación</h2>
       <input
         type="number"
         name="numHabitacion"

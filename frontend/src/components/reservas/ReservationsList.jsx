@@ -34,7 +34,7 @@ function ReservationsList() {
 
   return (
     <div>
-      <h2>Lista de Reservas</h2>
+      <h2 id='list-title'>Lista de Reservas</h2>
       <table>
         <thead>
           <tr>

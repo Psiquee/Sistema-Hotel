@@ -32,8 +32,8 @@ function ReservationForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Agregar Nueva Reserva</h2>
+    <form id= 'form-reservas' onSubmit={handleSubmit}>
+      <h2 Id="form-title">Agregar Nueva Reserva</h2>
       <input type="text" name="idHuesped" placeholder="Id Huésped" value={formData.idHuesped} onChange={handleChange} required />
       <input type="text" name="idHabitacion" placeholder="Id Habitación" value={formData.idHabitacion} onChange={handleChange} required />
       <input type="date" name="fechaLlegada" placeholder="Fecha Llegada" value={formData.fechaLlegada} onChange={handleChange} required />

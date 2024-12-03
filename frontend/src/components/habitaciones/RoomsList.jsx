@@ -41,7 +41,7 @@ function RoomsList() {
 
   return (
     <div>
-      <h2>Lista de Habitaciones</h2>
+      <h2 id='list-title'>Lista de Habitaciones</h2>
       <table>
         <thead>
           <tr>

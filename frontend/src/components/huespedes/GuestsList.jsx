@@ -15,7 +15,7 @@ function GuestsList() {
 
   return (
     <div>
-      <h2>Lista de Huéspedes</h2>
+      <h2 id='list-title'>Lista de Huéspedes</h2>
       <table>
         <thead>
           <tr>

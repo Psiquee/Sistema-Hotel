@@ -1,5 +1,5 @@
 //frontend/src/api/empleadosApi.js
-
+// api/empleadosApi.js
 import axios from 'axios';
 
 // Base URL de la API

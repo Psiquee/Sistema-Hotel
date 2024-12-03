@@ -30,7 +30,7 @@ function PaymentsList() {
 
   return (
     <div>
-      <h2>Lista de Pagos</h2>
+      <h2 id='list-title'>Lista de Pagos</h2>
       <table>
         <thead>
           <tr>

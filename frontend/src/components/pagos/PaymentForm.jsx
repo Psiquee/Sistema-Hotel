@@ -29,7 +29,7 @@ function PaymentForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Agregar Nuevo Pago</h2>
+      <h2 Id="form-title">Agregar Nuevo Pago</h2>
       <input type="text" name="idReserva" placeholder="Id Reserva" value={formData.idReserva} onChange={handleChange} required />
       <input type="date" name="fechaPago" placeholder="Fecha Pago" value={formData.fechaPago} onChange={handleChange} required />
       <input type="number" name="montoPago" placeholder="Monto Pago" value={formData.montoPago} onChange={handleChange} required />

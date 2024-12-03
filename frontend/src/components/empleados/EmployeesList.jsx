@@ -1,57 +1,104 @@
+//EmployeesList.jsx
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { getEmployees } from '../../api/empleadosApi';
 import axios from 'axios';
 
-const ListEmpleados = () => {
-    const [empleados, setEmpleados] = useState([]);
+const EmployeesList = () => {
+    const [employees, setEmployees] = useState([]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
-    // Cargar los empleados desde la API
     useEffect(() => {
-        const fetchEmpleados = async () => {
+        const fetchEmployees = async () => {
             try {
-                const response = await axios.get('/api/empleados');
-                setEmpleados(response.data); // Guardar los empleados en el estado
-                setLoading(false); // Termina de cargar
+                const data = await getEmployees();
+                setEmployees(data);
             } catch (error) {
-                console.error('Error al cargar los empleados', error);
-                setLoading(false); // Termina de cargar
+                console.error('Error al cargar empleados:', error);
+                alert('No se pudieron cargar los empleados.');
+            } finally {
+                setLoading(false);
             }
         };
-
-        fetchEmpleados();
+        fetchEmployees();
     }, []);
 
-    if (loading) {
-        return <div>Cargando empleados...</div>;
-    }
+    const handleAddEmployee = () => {
+        navigate('/add-employee');
+    };
+
+    const handleEdit = (id) => {
+        navigate(`/add-employee?id=${id}`);
+    };
+
+    const handleDelete = async (id) => {
+        const confirmDelete = window.confirm('¿Estás seguro de que deseas eliminar este empleado?');
+        if (confirmDelete) {
+            try {
+                await axios.delete(`http://localhost:5000/api/empleados/${id}`);
+                setEmployees(employees.filter((employee) => employee.Id_empleado !== id));
+                alert('Empleado eliminado correctamente.');
+            } catch (error) {
+                console.error('Error al eliminar el empleado:', error);
+                alert('Error al eliminar el empleado.');
+            }
+        }
+    };
 
     return (
         <div>
-            <h2>Lista de Empleados</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Cargo</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {empleados.map((empleado) => (
-                        <tr key={empleado.id_empleado}>
-                            <td>{empleado.id_empleado}</td>
-                            <td>{empleado.nombre} {empleado.apellido}</td>
-                            <td>{empleado.cargo}</td>
-                            <td>
-                                <button >Eliminar</button>
-                            </td>
+            <h2 id="list-title">Lista de Empleados</h2>
+            <button className="add-button" onClick={handleAddEmployee}>
+                Agregar Empleado
+            </button>
+            {loading ? (
+                <p>Cargando empleados...</p>
+            ) : employees.length === 0 ? (
+                <p>No hay empleados registrados.</p>
+            ) : (
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Cargo</th>
+                            <th>Teléfono</th>
+                            <th>Email</th>
+                            <th>Acciones</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {employees.map((employee) => (
+                            <tr key={employee.Id_empleado}>
+                                <td>{employee.Id_empleado}</td>
+                                <td>{employee.Nombre}</td>
+                                <td>{employee.Apellido}</td>
+                                <td>{employee.Cargo}</td>
+                                <td>{employee.Telefono}</td>
+                                <td>{employee.Email}</td>
+                                <td>
+                                    <button
+                                        className="edit-button"
+                                        onClick={() => handleEdit(employee.Id_empleado)}
+                                    >
+                                        Editar
+                                    </button>
+                                    <button
+                                        className="delete-button"
+                                        onClick={() => handleDelete(employee.Id_empleado)}
+                                    >
+                                        Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            )}
         </div>
     );
 };
 
-export default ListEmpleados;
+export default EmployeesList;

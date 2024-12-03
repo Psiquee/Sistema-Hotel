@@ -30,7 +30,7 @@ function GuestForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Agregar Nuevo Huésped</h2>
+      <h2 Id="form-title">Agregar Nuevo Huésped</h2>
       <input type="text" name="name" placeholder="Nombre" value={formData.name} onChange={handleChange} required />
       <input type="text" name="lastName" placeholder="Apellido" value={formData.lastName} onChange={handleChange} required />
       <input type="text" name="address" placeholder="Dirección" value={formData.address} onChange={handleChange} />

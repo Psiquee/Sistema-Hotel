@@ -2,17 +2,17 @@
 
 /* Estilos para los items en el menú desplegable */
 .navbar-dark .dropdown-menu {
-    background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro */
-    border: none; /* Elimina el borde del menú desplegable */
-  }
-  
-  .navbar-dark .dropdown-item {
-    color: #ffffff; /* Texto blanco para visibilidad */
-  }
-  
-  .navbar-dark .dropdown-item:hover {
-    background-color: #444444; /* Fondo gris oscuro en hover */
-    color: #ffffff; /* Mantiene el texto blanco en hover */
-  }
-  
+  background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro */
+  border: none; /* Elimina el borde del menú desplegable */
+}
+
+.navbar-dark .dropdown-item {
+  color: #ffffff; /* Texto blanco para visibilidad */
+}
+
+.navbar-dark .dropdown-item:hover {
+  background-color: #444444; /* Fondo gris oscuro en hover */
+  color: #ffffff; /* Mantiene el texto blanco en hover */
+}
+
   

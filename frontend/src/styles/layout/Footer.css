@@ -1,18 +1,43 @@
 /* Footer.css */
 .footer {
-
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 1rem;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  width: 100%; /* Asegura que ocupe todo el ancho */
+  padding: 1rem 2rem; /* Espaciado similar al navbar */
+  background-color: #1a1a1a; /* Fondo transparente para que solo el contenedor se vea */
+  color: #f5f5dc; /* Color claro similar a la navbar */
   text-align: center;
   font-size: 0.9rem;
+  box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1); /* Agrega sombra suave para destacar */
+  position: relative; /* Permite que se ajuste dinámicamente según el contenido */
+  margin-top: 2rem; /* Un pequeño margen para separar de la tabla */
+  border-radius: 0; /* Elimina los bordes redondeados */
 }
 
 .footer p {
   margin: 0;
-  padding: 0.2rem;
+  padding: 0.5rem 0;
+  color: #f5f5dc;  /* Gris oscuro, igual que los enlaces */
 }
+
+.footer p:hover {
+  color: #d4af37; /* Dorado al pasar el ratón */
+}
+
+
+
+.footer .container p {
+  margin-bottom: 0.5rem;
+}
+
+.footer a {
+
+  font-weight: bold;
+  text-decoration: none;
+  color: #f5f5dc; 
+}
+
+.footer a:hover {
+  color: #d4af37; /* Dorado en hover */
+}
+
+
   

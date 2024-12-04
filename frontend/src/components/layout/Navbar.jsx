@@ -1,14 +1,20 @@
-// Navbar.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
-import '../../styles/layout/Navbar.css'	
+import '../../styles/layout/Navbar.css';	
 
 function NavigationBar() {
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
-      <Container>
-        <Navbar.Brand as={Link} to="/">Hotel 5 Stars</Navbar.Brand>
+    <Navbar className="custom-navbar" expand="lg">
+      <Container fluid>
+      <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
+          <img
+            src="/assets/images/logo.png" 
+            alt="Hotel 5 Stars"
+            style={{ height: '100px', marginRight: '10px' }} 
+          />
+          
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -48,4 +54,3 @@ function NavigationBar() {
 }
 
 export default NavigationBar;
-

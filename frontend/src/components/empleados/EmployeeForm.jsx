@@ -1,7 +1,7 @@
-//frontend/src/components/empleados/ EmployeeForm.js
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getEmployeeById, updateEmployee, createEmployee } from '../../api/empleadosApi'; 
+import { getEmployeeById, updateEmployee, createEmployee } from '../../api/empleadosApi';
+import '../empleados/Empleados.css';
 
 const EmployeeForm = () => {
     const { id } = useParams();  // Este 'id' es de la URL
@@ -66,9 +66,12 @@ const EmployeeForm = () => {
 
     return (
         <div>
-            <h2 id='list-title'>Datos del Empleado</h2>
+
             <form id='form-employees' onSubmit={handleSubmit}>
-                <div>
+                <h2 id="form-title">
+                    <i className="fas fa-user-tie me-2"></i> Datos del Empleado
+                </h2>
+                <div className="nombre-container">
                     <label>Nombre</label>
                     <input
                         type="text"
@@ -77,7 +80,7 @@ const EmployeeForm = () => {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
+                <div className="apellido-container">
                     <label>Apellido</label>
                     <input
                         type="text"
@@ -86,16 +89,7 @@ const EmployeeForm = () => {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
-                    <label>Cargo</label>
-                    <input
-                        type="text"
-                        name="Cargo"
-                        value={employee.Cargo}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
+                <div className="tel-container">
                     <label>Teléfono</label>
                     <input
                         type="text"
@@ -104,7 +98,16 @@ const EmployeeForm = () => {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
+                <div className="cargo-container">
+                    <label>Cargo</label>
+                    <input
+                        type="text"
+                        name="Cargo"
+                        value={employee.Cargo}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="email-container">
                     <label>Email</label>
                     <input
                         type="email"
@@ -113,13 +116,20 @@ const EmployeeForm = () => {
                         onChange={handleChange}
                     />
                 </div>
-                <button type="submit">{id ? 'Actualizar' : 'Agregar'}</button>
+                <div className="button-container">
+                    <button
+                        className="edit-button"
+                        type="submit">
+                        {id ? 'Actualizar' : 'Agregar'}
+                    </button>
+                </div>
             </form>
         </div>
     );
 };
 
 export default EmployeeForm;
+
 
 
 

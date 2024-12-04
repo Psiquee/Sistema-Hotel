@@ -1,0 +1,85 @@
+#form-guest {
+  background-color: #b0b7bf;  /* Fondo similar al de empleados */
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.603);
+  max-width: 600px;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);  /* Dos columnas iguales */
+  gap: 1rem;  /* Espaciado entre columnas */
+}
+
+/* Título centrado y ocupa las dos columnas */
+#form-guest h2 {
+  grid-column: span 2;  /* Ocupa ambas columnas */
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Divs para las etiquetas y los inputs */
+#form-guest div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.8rem;  /* Espacio entre los campos */
+}
+
+/* Estilo de las etiquetas */
+#form-guest label {
+  font-size: 0.9rem;
+  color: #2c3e50;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+/* Estilo de los inputs */
+#form-guest input {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #2c3e50;
+}
+
+#form-guest input:focus {
+  outline: none;
+  border-color: #007bff;  /* Resalta el borde */
+}
+
+/* Email ocupa ambas columnas */
+#form-guest .email-container {
+  grid-column: span 2;  /* Ocupa las dos columnas */
+}
+
+/* Contenedor del botón */
+#form-guest .button-container {
+  grid-column: span 2;  /* Botón ocupa las dos columnas */
+  display: flex;
+  justify-content: center;
+}
+
+/* Estilo del botón */
+#form-guest button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: white;
+  background-color: #06b348;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#form-guest button:hover {
+  background-color: #e0a800;
+}
+
+/* Para pantallas pequeñas, hacer el formulario de una sola columna */
+@media (max-width: 768px) {
+  #form-guest {
+      grid-template-columns: 1fr;  /* Una sola columna */
+  }
+}

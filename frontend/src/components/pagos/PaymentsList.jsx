@@ -1,5 +1,5 @@
-// PaymentsList.jsx
 import React, { useState, useEffect } from 'react';
+import '../pagos/Pagos.css';
 
 function PaymentsList() {
   const [payments, setPayments] = useState([]);
@@ -29,8 +29,10 @@ function PaymentsList() {
   }, []);
 
   return (
-    <div>
-      <h2 id='list-title'>Lista de Pagos</h2>
+    <div className="container">
+   <h2 id="list-title">
+        <i className="fas fa-money-bill-wave me-2"></i>Lista de Pagos
+      </h2>
       <table>
         <thead>
           <tr>
@@ -58,3 +60,4 @@ function PaymentsList() {
 }
 
 export default PaymentsList;
+

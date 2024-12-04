@@ -1,5 +1,5 @@
-// GuestForm.jsx
-import React, { useState } from 'react';
+import React, { useState} from 'react';
+import '../huespedes/Huespedes.css';
 
 function GuestForm() {
   const [formData, setFormData] = useState({
@@ -9,7 +9,7 @@ function GuestForm() {
     phone: '',
     email: '',
   });
-
+ 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -29,16 +29,75 @@ function GuestForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2 Id="form-title">Agregar Nuevo Huésped</h2>
-      <input type="text" name="name" placeholder="Nombre" value={formData.name} onChange={handleChange} required />
-      <input type="text" name="lastName" placeholder="Apellido" value={formData.lastName} onChange={handleChange} required />
-      <input type="text" name="address" placeholder="Dirección" value={formData.address} onChange={handleChange} />
-      <input type="text" name="phone" placeholder="Teléfono" value={formData.phone} onChange={handleChange} />
-      <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-      <button type="submit">Agregar Huésped</button>
-    </form>
+    <div>
+      <form id="form-guest" onSubmit={handleSubmit}>
+      <h2 id="form-title">
+        <i className="fas fa-user me-2"></i> Agregar Nuevo Huésped
+      </h2>
+        <div>
+          <label>Nombre</label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Nombre"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Apellido</label>
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Apellido"
+            value={formData.lastName}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Dirección</label>
+          <input
+            type="text"
+            name="address"
+            placeholder="Dirección"
+            value={formData.address}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Teléfono</label>
+          <input
+            type="text"
+            name="phone"
+            placeholder="Teléfono"
+            value={formData.phone}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="button-container">
+          <div className="email-container">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <button type="submit" className="edit-button">
+              Agregar Huésped
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
   );
 }
 
 export default GuestForm;
+

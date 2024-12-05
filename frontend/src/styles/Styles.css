@@ -1,101 +1,24 @@
 /* styles.css */
 
-
 body {
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   margin: 0;
-  padding: 0;
-  background-color: rgb(141, 213, 236)!important;
+  background-color: #d8d8c0;
+  font-family: 'Arial', sans-serif;
+
 
 }
+
+main {
+  flex-grow: 1;
+
+}
+
 
 /* Contenedor de contenido con un desenfoque sutil para mejorar la legibilidad */
-.container {
-  backdrop-filter: blur(15px); /* Desenfoque más fuerte */
-  padding: 2rem;
-  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro y semitransparente */
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5); /* Sombra sutil para resaltar el contenido */
-  max-width: 1200px; /* Limita el tamaño máximo del contenedor */
-  margin: 0 auto;
-}
-
-/* Estilo para los enlaces de la barra de navegación */
-.navbar a {
-  color: #e0e0e0;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.navbar a:hover {
-  color: #fff; /* Color blanco al hacer hover */
-}
-
-/* Estilo para formularios y tablas */
-form, table {
-  margin: 10px auto;
-  padding: 2rem;
-  width: 80%;
-  max-width: 800px;
-  background: #222; /* Fondo oscuro para formularios y tablas */
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-/* Estilo general para las tablas */
-table {
-  width: 100%;
-  border-collapse: collapse; /* Elimina los espacios entre celdas */
-  border-radius: 8px;
-
-}
-
-/* Estilo para las celdas */
-th, td {
-  padding: 0.8rem;
-  text-align: left;
-
-  border-bottom: 1px solid #444; /* Línea sutil de separación */
-}
-
-/* Fondo alternado para filas */
-tr:nth-child(even) {
-  background-color: #333; /* Color oscuro para las filas pares */
-}
-
-tr:nth-child(odd) {
-  background-color: #222; /* Color ligeramente más oscuro para las filas impares */
-}
-
-th {
-  background-color: #444; /* Fondo más claro para los encabezados */
-  color: #fff;
-  font-weight: bold;
-}
-
-td {
-  margin: 10px;
-  color: #ddd;
-}
-
-/* Hover sobre filas */
-tr:hover {
-  background-color: #555; /* Fondo gris claro al pasar el mouse */
-}
-
-/* Estilo de los botones dentro de las tablas */
-button {
-padding: 0.2rem 0.5rem;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #45a049; /* Cambio de color al hacer hover */
-}
-
 
 .home-container {
   display: flex;
@@ -103,7 +26,7 @@ button:hover {
   align-items: center;
   justify-content: center;
   margin: 10% auto;
- 
+
 }
 
 .home-container h1 {
@@ -118,9 +41,53 @@ button:hover {
 }
 
 
-button, input, optgroup, select, textarea {
+/*BOTONES*/
 
-  margin: 10px !important;
-
+.btn {
+  border-radius: 5px;
+  border: none;
+  font-size: 14px;
+  margin: 10px;
 }
-  
+
+.add-button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.add-button:hover {
+  background-color: #0056b3;
+}
+
+.edit-button {
+  background-color: #06b348;
+  color: #fff;
+}
+
+.edit-button:hover {
+  background-color: #e0a800;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.delete-button:hover {
+  background-color: #bd2130;
+}
+
+/**/
+.text-end {
+  text-align: right;
+}
+
+
+/*FORMULARIOS*/
+/*TITULO DE FORMULARIOS*/
+#form-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #2c3e50;
+  margin: 1rem 0;
+}

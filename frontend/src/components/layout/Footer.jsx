@@ -7,7 +7,7 @@ function Footer() {
     <footer className="footer">
         <img
             src="/assets/images/logo.png" 
-            alt="Hotel 5 Stars"
+            alt="logo de Hotel 5 Stars"
             style={{ height: '100px', marginRight: '10px'}} 
           />
       <div className="text-center">

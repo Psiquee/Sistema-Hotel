@@ -6,6 +6,8 @@ import useLoading from '../../hooks/useLoading';  // Importar el hook de carga
 import useDelete from '../../hooks/useDelete';  
 import '../../styles/Empleados.css';
 
+
+
 const EmpleadosList = () => {
     const [employees, setEmployees] = useState([]);
     const { loading, startLoading, stopLoading } = useLoading();  
@@ -27,7 +29,7 @@ const EmpleadosList = () => {
             }
         };
         fetchEmployees();
-    }, [startLoading, stopLoading]);
+    }, []);
 
     const { deleteItem } = useDelete('http://localhost:3001/api/empleados', 'Empleado eliminado exitosamente');
 

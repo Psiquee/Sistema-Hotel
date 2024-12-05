@@ -78,30 +78,31 @@ function ReservationsList() {
               <tbody>
                 {reservations.map((reserva) => (
                   <tr key={reserva.idReserva}>
-                    <td>{reserva.idHuesped}</td>
-                    <td>{reserva.idHabitacion}</td>
-                    <td>{reserva.fechaLlegada}</td>
-                    <td>{reserva.fechaSalida}</td>
-                    <td>{reserva.numNoches}</td>
-                    <td>{reserva.precioTotal}</td>
-                    <td>{reserva.estadoReserva}</td>
-                    <td>
+                    <td data-label="Id Huésped">{reserva.idHuesped}</td>
+                    <td data-label="Id Habitación">{reserva.idHabitacion}</td>
+                    <td data-label="Fecha Llegada">{reserva.fechaLlegada}</td>
+                    <td data-label="Fecha Salida">{reserva.fechaSalida}</td>
+                    <td data-label="Noches">{reserva.numNoches}</td>
+                    <td data-label="Precio Total">{reserva.precioTotal}</td>
+                    <td data-label="Estado">{reserva.estadoReserva}</td>
+                    <td data-label="Acciones">
                       <button
-                        className="edit-button btn"
+                        className="btn btn-sm btn-warning edit-button"
                         onClick={() => handleEdit(reserva)}
                       >
-                        Editar
+                        <i className="fas fa-edit"></i>
                       </button>
                       <button
-                        className="delete-button btn"
+                        className="btn btn-sm btn-danger delete-button"
                         onClick={() => handleDelete(reserva.idReserva)}
                       >
-                        Eliminar
+                        <i className="fas fa-trash-alt"></i>
                       </button>
                     </td>
                   </tr>
                 ))}
               </tbody>
+
             </table>
           </div>
         </>

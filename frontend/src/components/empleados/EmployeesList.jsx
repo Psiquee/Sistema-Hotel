@@ -63,7 +63,7 @@ const EmployeesList = () => {
                 <div className="table-responsive">
                     <table className="table table-borderless table-hover">
                         <thead>
-                            <tr >
+                            <tr>
                                 <th scope="col" width="5%">#</th>
                                 <th scope="col" className="text-truncate" width="20%">Nombre</th>
                                 <th scope="col" className="text-truncate" width="20%">Apellido</th>
@@ -76,14 +76,13 @@ const EmployeesList = () => {
                         <tbody>
                             {employees.map((employee, index) => (
                                 <tr key={employee.Id_empleado}>
-                                    <td>{index + 1}</td>
-                                    <td>{employee.Nombre}</td>
-                                    <td>{employee.Apellido}</td>
-                                    <td>{employee.Cargo}</td>
-                                    <td>{employee.Telefono}</td>
-                                    <td className="text-truncate">{employee.Email}</td>
-                                    <td className="text-end">
-                                        {/* Botones Editar y Eliminar */}
+                                    <td data-label="#"> {index + 1} </td>
+                                    <td data-label="Nombre"> {employee.Nombre} </td>
+                                    <td data-label="Apellido"> {employee.Apellido} </td>
+                                    <td data-label="Cargo"> {employee.Cargo} </td>
+                                    <td data-label="Teléfono"> {employee.Telefono} </td>
+                                    <td data-label="Email" className="text-truncate"> {employee.Email} </td>
+                                    <td data-label="Acciones" className="text-end">
                                         <div className="btn-group" role="group" aria-label="Acciones">
                                             <button
                                                 className="btn btn-sm btn-warning edit-button"
@@ -102,6 +101,7 @@ const EmployeesList = () => {
                                 </tr>
                             ))}
                         </tbody>
+
                     </table>
                 </div>
             )}

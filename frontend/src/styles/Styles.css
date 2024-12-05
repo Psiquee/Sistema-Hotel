@@ -6,27 +6,19 @@ body {
   flex-direction: column;
   min-height: 100vh;
   margin: 0;
-  background-color: #d8d8c0; 
+  background-color: #d8d8c0;
   font-family: 'Arial', sans-serif;
-  
+
 
 }
 
 main {
   flex-grow: 1;
- 
+
 }
 
 
 /* Contenedor de contenido con un desenfoque sutil para mejorar la legibilidad */
-.container {
-  backdrop-filter: blur(15px);
-  padding: 1rem;
-  background-color: #b0b7bf;
-  border-radius: 5px;
-  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.603);
- 
-}
 
 .home-container {
   display: flex;
@@ -48,40 +40,6 @@ main {
   color: #444;
 }
 
-
-
-/*ESTILOS TABLAS
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-
- 
-}
-
-.table th,
-.table td {
-  border-top: 1px solid #dee2e6;
-  color: #2c3e50;
-  padding: 12px 15px;
-  text-align: left;
-  vertical-align: middle;
-  
-}
-
-.table thead tr {
-  background-color: #f8f9fa;
-}
-
-.table tbody tr:hover {
-  background-color: #f8f9fa;
-}
-
-.table-responsive {
-  overflow-x: auto;
-  margin-bottom: 2rem;
- 
-}*/
 
 /*BOTONES*/
 
@@ -127,7 +85,7 @@ main {
 
 /*FORMULARIOS*/
 /*TITULO DE FORMULARIOS*/
-#form-title{
+#form-title {
   text-align: center;
   font-size: 2rem;
   color: #2c3e50;
@@ -137,35 +95,3 @@ main {
 
 
 /* Estilo para la tablas */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1rem 0;
-}
-
-table th, table td {
-  border-top: 1px solid #dee2e6;
-  padding: 12px 15px;
-  text-align: left;
-  vertical-align: middle;
-  color: #2c3e50;
-}
-
-table thead tr {
-  background-color: #f8f9fa;
-}
-
-table tbody tr:hover {
-  background-color: #f1f1f1;
-}
-
-/* Asegurar que la tabla sea responsiva */
-.table-responsive {
-  overflow-x: auto;
-  margin: 2rem 0;
-}
-
-
-
-
-

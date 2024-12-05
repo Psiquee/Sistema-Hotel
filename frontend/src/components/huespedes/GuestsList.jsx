@@ -5,10 +5,10 @@ function GuestsList() {
   const [guests, setGuests] = useState([]);
 
   useEffect(() => {
-    // Aquí iría la llamada a la API para obtener los huéspedes
+    
     setGuests([
-      { id: 100, name: 'Sofia Villa', address: 'San Fco', phone: '3564-123456', email: 'sofivilla@gmail.com' },
-      { id: 101, name: 'Carlos Castro', address: 'Córdoba', phone: '351-654321', email: 'carloscastro@gmail.com' },
+      { id: 100, name: 'Sofia', lastName: ' Villa', address: 'San Fco', phone: '3564-123456', email: 'sofivilla@gmail.com' },
+      { id: 101, name: 'Carlos', lastName: ' Castro', address: 'Córdoba', phone: '351-654321', email: 'carloscastro@gmail.com' },
     ]);
   }, []);
 
@@ -34,7 +34,7 @@ function GuestsList() {
           <i className="fas fa-user-friends me-2"></i> Lista de Huéspedes
         </h2>
       </div>
-    
+
       {guests.length === 0 ? (
         <p className="text-center">🚫 No hay huéspedes registrados.</p>
       ) : (
@@ -43,23 +43,24 @@ function GuestsList() {
             <thead>
               <tr>
                 <th scope="col" width="5%">ID</th>
-                <th scope="col" width="20%">Nombre</th>
-                <th scope="col" width="25%">Dirección</th>
+                <th scope="col" width="10%">Nombre</th>
+                <th scope='col' width="10">Apellido</th>
+                <th scope="col" width="20%">Dirección</th>
                 <th scope="col" width="15%">Teléfono</th>
                 <th scope="col" width="25%">Email</th>
-                <th scope="col" width="10%" className="text-end">Acciones</th>
+                <th scope="col" width="15%" className="text-end">Acciones</th>
               </tr>
             </thead>
             <tbody>
               {guests.map((guest) => (
                 <tr key={guest.id}>
-                  <td>{guest.id}</td>
-                  <td>{guest.name}</td>
-                  <td>{guest.address}</td>
-                  <td>{guest.phone}</td>
-                  <td>{guest.email}</td>
-                  <td className="text-end">
-                    {/* Botones Editar y Eliminar */}
+                  <td data-label="ID">{guest.id}</td>
+                  <td data-label="Nombre">{guest.name}</td>
+                  <td data-label="Apellido">{guest.lastName}</td>
+                  <td data-label="Dirección">{guest.address}</td>
+                  <td data-label="Teléfono">{guest.phone}</td>
+                  <td data-label="Email">{guest.email}</td>
+                  <td data-label="Acciones" className="text-end">
                     <div className="btn-group" role="group" aria-label="Acciones">
                       <button
                         className="btn btn-sm btn-warning edit-button"
@@ -74,11 +75,12 @@ function GuestsList() {
                         <i className="fas fa-trash-alt"></i>
                       </button>
                     </div>
-
                   </td>
                 </tr>
               ))}
             </tbody>
+
+
           </table>
         </div>
       )}

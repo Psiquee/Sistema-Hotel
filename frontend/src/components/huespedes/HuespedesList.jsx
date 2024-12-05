@@ -4,6 +4,7 @@ import { getHuespedes } from '../../api/huespedesApi';
 import EditarHuespedModal from './EditarHuespedModal'; // Corrige el import
 import useLoading from '../../hooks/useLoading';
 import useDelete from '../../hooks/useDelete';
+import '../../styles/Huespedes.css';
 
 const HuespedesList = () => {
   const [huespedes, setHuespedes] = useState([]);
@@ -60,8 +61,8 @@ const HuespedesList = () => {
 
   return (
     <div>
-      <h2 id="list-title">Lista de Huéspedes</h2>
-      <button className="add-button" onClick={handleAddHuesped}>
+      <h2 id="list-title" className="text-center">Lista de Huéspedes</h2>
+      <button className="add-button btn btn-success my-3" onClick={handleAddHuesped}>
         Agregar Huésped
       </button>
       {loading ? (
@@ -71,37 +72,51 @@ const HuespedesList = () => {
           </div>
         </div>
       ) : huespedes.length === 0 ? (
-        <p>No hay huéspedes registrados.</p>
+        <p className="text-center">🚫 No hay huéspedes registrados.</p>
       ) : (
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Dirección</th>
-              <th>Teléfono</th>
-              <th>Email</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {huespedes.map((huesped) => (
-              huesped && huesped.Id_huesped ? ( //corroboro que exista el huesped
-                <tr key={huesped.Id_huesped}>
-                  <td>{huesped.Id_huesped}</td>
-                  <td>{huesped.Nombre}</td>
-                  <td>{huesped.Direccion}</td>
-                  <td>{huesped.Telefono}</td>
-                  <td>{huesped.Mail}</td>
-                  <td>
-                    <button onClick={() => handleEdit(huesped.Id_huesped)}>Editar</button>
-                    <button onClick={() => handleDelete(huesped.Id_huesped)}>Eliminar</button>
-                  </td>
-                </tr>
-              ) : null // si no tiene id no undefin
-            ))}
-          </tbody>
-        </table>
+        <div className="table-responsive">
+          <table className="table table-borderless table-hover">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Email</th>
+                <th scope="col" className="text-end">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {huespedes.map((huesped) =>
+                huesped && huesped.Id_huesped ? (
+                  <tr key={huesped.Id_huesped}>
+                    <td data-label="ID">{huesped.Id_huesped}</td>
+                    <td data-label="Nombre">{huesped.Nombre}</td>
+                    <td data-label="Dirección">{huesped.Direccion}</td>
+                    <td data-label="Teléfono">{huesped.Telefono}</td>
+                    <td data-label="Email">{huesped.Mail}</td>
+                    <td data-label="Acciones" className="text-end">
+                      <div className="btn-group" role="group" aria-label="Acciones">
+                        <button
+                          className="btn btn-sm btn-warning edit-button"
+                          onClick={() => handleEdit(huesped.Id_huesped)}
+                        >
+                          <i className="fas fa-edit"></i>
+                        </button>
+                        <button
+                          className="btn btn-sm btn-danger delete-button"
+                          onClick={() => handleDelete(huesped.Id_huesped)}
+                        >
+                          <i className="fas fa-trash-alt"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ) : null
+              )}
+            </tbody>
+          </table>
+        </div>
       )}
       {showEditModal && (
         <EditarHuespedModal
@@ -113,6 +128,5 @@ const HuespedesList = () => {
       )}
     </div>
   );
-};
-
+}  
 export default HuespedesList;

@@ -17,6 +17,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/Styles.css';
 import './App.css';
 import Footer from './components/layout/Footer';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function App() {
   return (

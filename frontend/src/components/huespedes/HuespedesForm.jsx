@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import useAdd from '../../hooks/useAdd';
-import useEdit from '../../hooks/useEdit'; 
+import useEdit from '../../hooks/useEdit';
 import { getHuespedPorId } from '../../api/huespedesApi';
 
 const HuespedesForm = () => {
-    const { id } = useParams();  
+    const { id } = useParams();
     const navigate = useNavigate();
     const [huesped, setHuesped] = useState({
         Nombre: '',
@@ -19,12 +19,11 @@ const HuespedesForm = () => {
     const { addItem, error: addError } = useAdd('http://localhost:3001/api/huespedes', 'Huésped agregado correctamente');
     const { editItem, error: editError } = useEdit('http://localhost:3001/api/huespedes', 'Huésped actualizado correctamente');
 
-    // cargo data para editar
+    // Cargar datos para editar
     useEffect(() => {
-        
         if (id) {
             setLoading(true);
-            getHuespedPorId(id) //huesped x id
+            getHuespedPorId(id)
                 .then((data) => {
                     setHuesped(data);
                     setLoading(false);
@@ -36,28 +35,28 @@ const HuespedesForm = () => {
         }
     }, [id]);
 
-    
-      //envio
-      const handleSubmit = async (e) => {
+    // Envío del formulario
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
 
         try {
             if (id) {
-                // si coincide id edit
+                // Editar si existe el ID
                 await editItem(id, huesped);
             } else {
-                // sino hay se crea uno nuevo
+                // Crear uno nuevo si no existe el ID
                 await addItem(huesped);
             }
             setLoading(false);
-            navigate('/guests');  //reedireccion
+            navigate('/guests');
         } catch (error) {
-            console.error('Error al guardar huesped:', error);
+            console.error('Error al guardar huésped:', error);
             setLoading(false);
         }
     };
-    //manejo cambio
+
+    // Manejo del cambio de input
     const handleChange = (e) => {
         const { name, value } = e.target;
         setHuesped((prevHuesped) => ({
@@ -66,71 +65,87 @@ const HuespedesForm = () => {
         }));
     };
 
-    if (loading) return (
-        <div className="spinner-border" role="status">
-          <span className="visually-hidden">Cargando...</span>
-        </div>
-    );
+    if (loading)
+        return (
+            <div className="d-flex justify-content-center">
+                <div className="spinner-border" role="status">
+                    <span className="visually-hidden">Cargando...</span>
+                </div>
+            </div>
+        );
 
     return (
         <div>
-            <h2>{id ? 'Editar Huésped' : 'Agregar Nuevo Huésped'}</h2>
-            <form onSubmit={handleSubmit}>
+            <form id="form-guest" onSubmit={handleSubmit}>
+                <h2 id="form-title" className="text-center">
+                    <i className="fas fa-user me-2"></i>
+                    {id ? 'Editar Huésped' : 'Agregar Nuevo Huésped'}
+                </h2>
                 <div>
-                    <label style={{ color: 'white' }}>Nombre</label>
+                    <label>Nombre</label>
                     <input
                         type="text"
                         name="Nombre"
+                        placeholder="Nombre"
                         value={huesped.Nombre}
                         onChange={handleChange}
                         required
                     />
                 </div>
                 <div>
-                    <label style={{ color: 'white' }}>Apellido</label>
+                    <label>Apellido</label>
                     <input
                         type="text"
                         name="Apellido"
+                        placeholder="Apellido"
                         value={huesped.Apellido}
                         onChange={handleChange}
                         required
                     />
                 </div>
                 <div>
-                    <label style={{ color: 'white' }}>Dirección</label>
+                    <label>Dirección</label>
                     <input
                         type="text"
                         name="Direccion"
+                        placeholder="Dirección"
                         value={huesped.Direccion}
                         onChange={handleChange}
                     />
                 </div>
                 <div>
-                    <label style={{ color: 'white' }}>Teléfono</label>
+                    <label>Teléfono</label>
                     <input
                         type="text"
                         name="Telefono"
+                        placeholder="Teléfono"
                         value={huesped.Telefono}
                         onChange={handleChange}
                     />
                 </div>
-                <div>
-                    <label  style={{ color: 'white' }}>Email</label>
+                <div className="email-container">
+                    <label>Email</label>
                     <input
                         type="email"
                         name="Mail"
+                        placeholder="Email"
                         value={huesped.Mail}
                         onChange={handleChange}
                         required
                     />
                 </div>
-                <button type="submit">{id ? 'Actualizar' : 'Agregar'}</button>
+                <div className="button-container">
+                    <button type="submit" className="btn btn-success">
+                        {id ? 'Actualizar' : 'Agregar'}
+                    </button>
+                </div>
             </form>
 
-            {addError && <div>{addError}</div>}
-            {editError && <div>{editError}</div>}
+            {addError && <div className="alert alert-danger">{addError}</div>}
+            {editError && <div className="alert alert-danger">{editError}</div>}
         </div>
     );
 };
 
 export default HuespedesForm;
+

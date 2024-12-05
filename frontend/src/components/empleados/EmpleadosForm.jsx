@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import useAdd from '../../hooks/useAdd';  
 import useEdit from '../../hooks/useEdit'; 
 import { getEmployeeById } from '../../api/empleadosApi'; 
+import '../../styles/Empleados.css';
 
 const EmpleadosForm = () => {
     const { id } = useParams();  

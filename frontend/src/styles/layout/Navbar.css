@@ -1,18 +1,98 @@
 /* Navbar.css */
 
-/* Estilos para los items en el menú desplegable */
-.navbar-dark .dropdown-menu {
-  background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro */
-  border: none; /* Elimina el borde del menú desplegable */
+.navbar {
+  width: 100%; /* Asegura que ocupe todo el ancho */
+  padding: 1rem 2rem; /* Agrega más espacio para que sea proporcional */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
 }
 
-.navbar-dark .dropdown-item {
-  color: #ffffff; /* Texto blanco para visibilidad */
+
+.custom-navbar {
+  background-color: #1a1a1a !important;
+  height: auto;
 }
 
-.navbar-dark .dropdown-item:hover {
-  background-color: #444444; /* Fondo gris oscuro en hover */
-  color: #ffffff; /* Mantiene el texto blanco en hover */
+/* Estilo para los enlaces de la barra de navegación */
+.navbar-expand-lg .navbar-nav .nav-link {
+  color: #f5f5dc; 
+  text-decoration: none;
+  font-weight: bold;
 }
 
+.navbar-expand-lg .navbar-nav .nav-link:hover {
+ background-color: #1d2833;
+ border-radius: 15px;
+  color: #fff;
+
+}
+/* General de la Navbar */
+.custom-navbar {
+  width: 100%;
+  background-color: transparent; 
+  padding: 1rem 2rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.custom-navbar .navbar-brand {
+  font-size: 1.5rem;
+  color: #34495e; 
+  font-weight: bold;
+}
+
+.custom-navbar .navbar-brand:hover {
+  color: #d4af37;
+  text-decoration: none;
+}
+
+/* Estilo para los enlaces del menú */
+.custom-navbar .nav-link,
+.custom-navbar .dropdown-item {
+  color: #2c3e50;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.custom-navbar .nav-link:hover,
+.custom-navbar .dropdown-item:hover {
+  color: #d4af37; 
+
+
+}
+/* Prevenir estado oscuro en enlaces al hacer clic */
+.navbar-expand-lg .navbar-nav .nav-link:focus,
+.navbar-expand-lg .navbar-nav .nav-link:active {
+  outline: none; /* Elimina el contorno por defecto */
+  color: #f5f5dc; /* Mantiene el color original */
+  background-color: transparent; /* Asegura que no haya cambio de fondo */
+}
+
+/* Personalización para enlaces de .custom-navbar */
+.custom-navbar .nav-link:focus,
+.custom-navbar .nav-link:active {
+  outline: none; /* Elimina el contorno */
+  color: #2c3e50; /* Mantiene el color base */
+  background-color: transparent; /* Evita fondo oscuro */
+}
+
+
+/* Dropdown */
+.custom-navbar .dropdown-menu {
+  background-color: #f8f9fa; 
+  border: none;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2); 
+}
+
+.custom-navbar .dropdown-item {
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+}
+
+
+.navbar-light .navbar-toggler {
+    background-color: rgb(240 240 215); 
+ 
+  }
   

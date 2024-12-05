@@ -1,61 +1,60 @@
-//frontend/src/api/empleadosApi.js
-// api/empleadosApi.js
 import axios from 'axios';
 
-// Base URL de la API
-const API_URL = 'http://localhost:3001/api';
 
-// Obtener todos los empleados
+const API_URL = process.env.REACT_APP_API_URL;
+
+// obtengo todos los empleados
 export const getEmployees = async () => {
   try {
     const response = await axios.get(`${API_URL}/empleados`);
-    return response.data; // Retorna los datos de los empleados
+    return response.data; // retorna data
   } catch (error) {
     console.error('Error al obtener empleados:', error);
-    throw error; // Lanza el error para manejarlo en el componente
+    throw error; // maneja error
   }
 };
 
-// Obtener un empleado por su ID
+// obtengo un empleado por ID
 export const getEmployeeById = async (id) => {
   try {
     const response = await axios.get(`${API_URL}/empleados/${id}`);
-    return response.data; // Retorna los datos del empleado específico
+    return response.data; //retorna la data
   } catch (error) {
     console.error(`Error al obtener el empleado con ID ${id}:`, error);
-    throw error; // Lanza el error para manejarlo en el componente
+    throw error; 
   }
 };
 
-// Crear un nuevo empleado
+// crea un nuevo empleado
 export const createEmployee = async (employeeData) => {
   try {
     const response = await axios.post(`${API_URL}/empleados`, employeeData);
-    return response.data; // Retorna los datos del nuevo empleado
+    return response.data; // retorna data
   } catch (error) {
     console.error('Error al crear empleado:', error);
-    throw error; // Lanza el error para manejarlo en el componente
+    throw error; 
   }
 };
 
-// Actualizar un empleado existente
+// actualiza un empleado
 export const updateEmployee = async (id, employeeData) => {
   try {
-    const response = await axios.put(`${API_URL}/empleados/${id}`, employeeData);
-    return response.data; // Retorna los datos del empleado actualizado
+    const response = await axios.patch(`${API_URL}/empleados/${id}`, employeeData);
+    return response.data; // retorna data
   } catch (error) {
     console.error(`Error al actualizar el empleado con ID ${id}:`, error);
-    throw error; // Lanza el error para manejarlo en el componente
+    throw error; 
   }
 };
 
-// Eliminar un empleado por su ID
+// elimina un empleado por su ID
 export const deleteEmployee = async (id) => {
   try {
     const response = await axios.delete(`${API_URL}/empleados/${id}`);
-    return response.data; // Retorna la respuesta después de eliminar al empleado
+    return response.data; // retorna data
   } catch (error) {
     console.error(`Error al eliminar el empleado con ID ${id}:`, error);
-    throw error; // Lanza el error para manejarlo en el componente
+    throw error; 
   }
 };
+

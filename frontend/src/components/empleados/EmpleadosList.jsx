@@ -1,51 +1,63 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getEmployees } from '../../api/empleadosApi';
-import axios from 'axios';
+import EditarEmpleadoModal from './EditarEmpleadoModal';
+import useLoading from '../../hooks/useLoading';  // Importar el hook de carga
+import useDelete from '../../hooks/useDelete';  
 
-const EmployeesList = () => {
+const EmpleadosList = () => {
     const [employees, setEmployees] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const { loading, startLoading, stopLoading } = useLoading();  
+    const [showEditModal, setShowEditModal] = useState(false); 
+    const [selectedEmployeeId, setSelectedEmployeeId] = useState(null); // almaceno el id del seleccionado
     const navigate = useNavigate();
 
+    // usamos hook para obtener empleados
     useEffect(() => {
         const fetchEmployees = async () => {
+            startLoading(); 
             try {
                 const data = await getEmployees();
                 setEmployees(data);
             } catch (error) {
                 console.error('Error al cargar empleados:', error);
-                //alert('No se pudieron cargar los empleados.');
             } finally {
-                setLoading(false);
+                stopLoading(); 
             }
         };
         fetchEmployees();
     }, []);
+
+    const { deleteItem } = useDelete('http://localhost:3001/api/empleados', 'Empleado eliminado exitosamente');
 
     const handleAddEmployee = () => {
         navigate('/add-employee');
     };
 
     const handleEdit = (id) => {
-        navigate(`/add-employee?id=${id}`);
+        setSelectedEmployeeId(id);
+        setShowEditModal(true);
     };
 
     const handleDelete = async (id) => {
-        const confirmDelete = window.confirm('¿Estás seguro de que deseas eliminar este empleado?');
-        if (confirmDelete) {
-            setLoading(true); // Muestra un indicador de carga mientras elimina
+        await deleteItem(id); //  hook para eliminar
+        setEmployees(employees.filter((employee) => employee.Id_empleado !== id)); // actualizamos
+    };
+
+    // funcion actualizar
+    const updateEmployeeList = () => {
+        const fetchEmployees = async () => {
+            startLoading();  
             try {
-                await axios.delete(`http://localhost:3001/api/empleados/${id}`);
-                setEmployees(employees.filter((employee) => employee.Id_empleado !== id));
-                alert('Empleado eliminado correctamente.');
+                const data = await getEmployees();
+                setEmployees(data);
             } catch (error) {
-                console.error('Error al eliminar el empleado:', error);
-                alert('Error al eliminar el empleado.');
+                console.error('Error al cargar empleados:', error);
             } finally {
-                setLoading(false); // Oculta el indicador de carga una vez completado
+                stopLoading();  
             }
-        }
+        };
+        fetchEmployees();
     };
 
     return (
@@ -55,10 +67,14 @@ const EmployeesList = () => {
                 Agregar Empleado
             </button>
             {loading ? (
-                <p>Cargando empleados...</p>
-            ) : employees.length === 0 ? (
-                <p>No hay empleados registrados.</p>
-            ) : (
+        <div className="d-flex justify-content-center">
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden">Cargando...</span>
+          </div>
+        </div>
+      ) : employees.length === 0 ? (
+        <p>No hay empleados registrados.</p>
+      ) : (
                 <table>
                     <thead>
                         <tr>
@@ -99,8 +115,16 @@ const EmployeesList = () => {
                     </tbody>
                 </table>
             )}
+
+            {/* Modal de Edición */}
+            <EditarEmpleadoModal
+                show={showEditModal}
+                handleClose={() => setShowEditModal(false)}
+                employeeId={selectedEmployeeId}
+                updateEmployeeList={updateEmployeeList}
+            />
         </div>
     );
 };
 
-export default EmployeesList;
+export default EmpleadosList;

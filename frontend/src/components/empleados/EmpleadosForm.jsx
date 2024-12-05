@@ -1,10 +1,12 @@
-//frontend/src/components/empleados/ EmployeeForm.js
+
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getEmployeeById, updateEmployee, createEmployee } from '../../api/empleadosApi'; 
+import useAdd from '../../hooks/useAdd';  
+import useEdit from '../../hooks/useEdit'; 
+import { getEmployeeById } from '../../api/empleadosApi'; 
 
-const EmployeeForm = () => {
-    const { id } = useParams();  // Este 'id' es de la URL
+const EmpleadosForm = () => {
+    const { id } = useParams();  
     const navigate = useNavigate();
     const [employee, setEmployee] = useState({
         Nombre: '',
@@ -14,14 +16,17 @@ const EmployeeForm = () => {
         Email: ''
     });
     const [loading, setLoading] = useState(false);
+    const { addItem,  error: addError } = useAdd('http://localhost:3001/api/empleados', 'Empleado agregado correctamente');
+    const { editItem,  error: editError } = useEdit('http://localhost:3001/api/empleados', 'Empleado actualizado correctamente');
 
-    // Cargar datos del empleado si existe el id en la URL (editando un empleado)
+  
+    
     useEffect(() => {
-        if (id) {  // Si el id existe, significa que estamos en el modo de edición
+        if (id) {  //si el id coincide se habilita edicion
             setLoading(true);
             getEmployeeById(id)
                 .then((data) => {
-                    setEmployee(data);  // Rellenar los campos con los datos del empleado
+                    setEmployee(data);  //relleno campo
                     setLoading(false);
                 })
                 .catch((error) => {
@@ -31,28 +36,28 @@ const EmployeeForm = () => {
         }
     }, [id]);
 
-    // Manejar el envío del formulario
+    //envio
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
 
         try {
             if (id) {
-                // Si hay un id, significa que estamos actualizando
-                await updateEmployee(id, employee);
+                // si coincide id edit
+                await editItem(id, employee);
             } else {
-                // Si no hay id, significa que estamos creando un nuevo empleado
-                await createEmployee(employee);
+                // sino hay se crea uno nuevo
+                await addItem(employee);
             }
             setLoading(false);
-            navigate('/employees');  // Redirigir a la lista de empleados después de guardar
+            navigate('/employees');  //reedireccion
         } catch (error) {
             console.error('Error al guardar el empleado:', error);
             setLoading(false);
         }
     };
 
-    // Manejar cambios en los campos del formulario
+    //manejo  cambios
     const handleChange = (e) => {
         const { name, value } = e.target;
         setEmployee((prevEmployee) => ({
@@ -61,15 +66,20 @@ const EmployeeForm = () => {
         }));
     };
 
-    // Mostrar un mensaje de carga mientras obtenemos los datos del empleado
-    if (loading) return <p>Cargando...</p>;
+    
+    if (loading) return (
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Cargando...</span>
+        </div>
+      );
+      
 
     return (
         <div>
             <h2 id='list-title'>Datos del Empleado</h2>
-            <form id='form-employees' onSubmit={handleSubmit}>
+            <form id='form-employees ' onSubmit={handleSubmit}>
                 <div>
-                    <label>Nombre</label>
+                    <label style={{ color: 'white' }}>Nombre</label>
                     <input
                         type="text"
                         name="Nombre"
@@ -78,7 +88,7 @@ const EmployeeForm = () => {
                     />
                 </div>
                 <div>
-                    <label>Apellido</label>
+                    <label style={{ color: 'white' }}>Apellido</label>
                     <input
                         type="text"
                         name="Apellido"
@@ -87,7 +97,7 @@ const EmployeeForm = () => {
                     />
                 </div>
                 <div>
-                    <label>Cargo</label>
+                    <label style={{ color: 'white' }}>Cargo</label>
                     <input
                         type="text"
                         name="Cargo"
@@ -96,7 +106,7 @@ const EmployeeForm = () => {
                     />
                 </div>
                 <div>
-                    <label>Teléfono</label>
+                    <label style={{ color: 'white' }}>Teléfono</label>
                     <input
                         type="text"
                         name="Telefono"
@@ -105,7 +115,7 @@ const EmployeeForm = () => {
                     />
                 </div>
                 <div>
-                    <label>Email</label>
+                    <label style={{ color: 'white' }}>Email</label>
                     <input
                         type="email"
                         name="Email"
@@ -115,12 +125,13 @@ const EmployeeForm = () => {
                 </div>
                 <button type="submit">{id ? 'Actualizar' : 'Agregar'}</button>
             </form>
+
+            {addError && <div>{addError}</div>}
+            {editError && <div>{editError}</div>}
         </div>
     );
 };
 
-export default EmployeeForm;
-
-
+export default EmpleadosForm;
 
 

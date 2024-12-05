@@ -1,49 +1,49 @@
 //frontend/src/ App.js
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import NavigationBar from './components/layout/Navbar';
-import GuestsList from './components/huespedes/GuestsList';
-import GuestForm from './components/huespedes/GuestForm';
-import EmployeesList from './components/empleados/EmployeesList';
-import EmployeeForm from './components/empleados/EmployeeForm';
-import ReservationsList from './components/reservas/ReservationsList';
-import ReservationForm from './components/reservas/ReservationForm';
-import PaymentsList from './components/pagos/PaymentsList';
-import PaymentForm from './components/pagos/PaymentForm';
-import RoomsList from './components/habitaciones/RoomsList';
-import RoomForm from './components/habitaciones/RoomForm';
+import NavBar from './components/layout/Navbar';
+import ReservacionesList from './components/reservas/ReservacionesList';
+import ReservacionesForm from './components/reservas/ReservacionesForm';
 import Footer from './components/layout/Footer';
 import Home from './components/home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/Styles.css';
 import './App.css';
+import EmpleadosList from './components/empleados/EmpleadosList';
+import EmpleadosForm from './components/empleados/EmpleadosForm';
+import HuespedesForm from './components/huespedes/HuespedesForm';
+import HuespedesList from './components/huespedes/HuespedesList';
+import HabitacionesList from './components/habitaciones/HabitacionesList';
+import HabitacionesForm from './components/habitaciones/HabitacionesForm';
+import PagosList from './components/pagos/PagosList';
+import PagosForm from './components/pagos/PagosForm';
 
 
 function App() {
   return (
     <Router>
-      <NavigationBar />
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* Gestión de Personas */}
-        <Route path="/guests" element={<GuestsList />} />
-        <Route path="/add-guest" element={<GuestForm />} />
+       
+        <Route path="/guests" element={<HuespedesList />} />
+        <Route path="/add-guest" element={<HuespedesForm />} />
 
-        <Route path="/employees" element={<EmployeesList />} />
-        <Route path="/add-employee" element={<EmployeeForm />} />
-        <Route path="/add-employee?id=:id" element={<EmployeeForm />} />
+        <Route path="/employees" element={<EmpleadosList />} />
+        <Route path="/add-employee" element={<EmpleadosForm />} />
+        <Route path="/add-employee?id=:id" element={<EmpleadosForm />} />
 
-        {/* Gestión de Reservas */}
-        <Route path="/reservations" element={<ReservationsList />} />
-        <Route path="/add-reservation" element={<ReservationForm />} />
+    
+        <Route path="/reservations" element={<ReservacionesList />} />
+        <Route path="/add-reservation" element={<ReservacionesForm />} />
 
-        {/* Gestión de Cobros */}
-        <Route path="/payments" element={<PaymentsList />} />
-        <Route path="/add-payment" element={<PaymentForm />} />
+        
+        <Route path="/payments" element={<PagosList />} />
+        <Route path="/add-payment" element={<PagosForm />} />
 
-        {/* Habitaciones */}
-        <Route path="/rooms" element={<RoomsList />} />
-        <Route path="/add-room" element={<RoomForm />} />
+        
+        <Route path="/rooms" element={<HabitacionesList />} />
+        <Route path="/add-room" element={<HabitacionesForm />} />
       </Routes>
       <Footer />
     </Router>

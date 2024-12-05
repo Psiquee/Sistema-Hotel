@@ -43,7 +43,7 @@ export const crearEmpleado = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             message: 'Ha ocurrido un error',
-            error: error.message
+            //error: error.message
         })
     }
 }

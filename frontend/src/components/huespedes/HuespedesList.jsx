@@ -61,7 +61,8 @@ const HuespedesList = () => {
 
   return (
     <div>
-      <h2 id="list-title" className="text-center">Lista de Huéspedes</h2>
+      <h2 id="list-title" className="text-center">
+      <i className="fas fa-user-friends me-2"></i> Lista de Huéspedes</h2>
       <button className="add-button btn btn-success my-3" onClick={handleAddHuesped}>
         Agregar Huésped
       </button>

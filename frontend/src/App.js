@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './components/layout/Navbar';
 import ReservacionesList from './components/reservas/ReservacionesList';
 import ReservacionesForm from './components/reservas/ReservacionesForm';
-import Footer from './components/layout/Footer';
+
 import Home from './components/home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/Styles.css';
@@ -17,7 +17,7 @@ import HabitacionesList from './components/habitaciones/HabitacionesList';
 import HabitacionesForm from './components/habitaciones/HabitacionesForm';
 import PagosList from './components/pagos/PagosList';
 import PagosForm from './components/pagos/PagosForm';
-
+import Footer from './components/layout/Footer';
 
 function App() {
   return (

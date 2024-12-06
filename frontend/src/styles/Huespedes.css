@@ -89,7 +89,7 @@
   }
   /* Asegúrate de que la tabla no ocupe más del 100% del contenedor */
   .table {
-    width: 80%; 
+    width: 90%; 
     table-layout: fixed; 
   }
   

@@ -6,6 +6,7 @@ import useLoading from '../../hooks/useLoading'; // Importar el hook de carga
 import useDelete from '../../hooks/useDelete';
 import '../../styles/Empleados.css';
 
+
 const EmpleadosList = () => {
     const [employees, setEmployees] = useState([]);
     const { loading, startLoading, stopLoading } = useLoading();
@@ -41,10 +42,9 @@ const EmpleadosList = () => {
     };
 
     const handleDelete = async (id) => {
-        await deleteItem(id); // hook para eliminar
+        await deleteItem(id); //  hook para eliminar
         setEmployees(employees.filter((employee) => employee.Id_empleado !== id)); // actualizamos
     };
-
     // función actualizar
     const updateEmployeeList = () => {
         const fetchEmployees = async () => {
@@ -62,12 +62,18 @@ const EmpleadosList = () => {
     };
 
     return (
-        <div>
-            <h2 id="list-title">Lista de Empleados</h2>
-            <button className="add-button" onClick={handleAddEmployee}>
-                Agregar Empleado
-            </button>
-    
+        <div className="container mt-5 px-2">
+
+            <div className="mb-2 d-flex justify-content-between align-items-center">
+                <h2 className="list-title">
+                    <i class="fas fa-users me-2"></i>
+                    Lista de Empleados
+                </h2>
+                <button className="add-button btn btn-success my-3" onClick={handleAddEmployee}>
+                    Agregar Empleado
+                </button>
+            </div>
+
             {loading ? (
                 <div className="d-flex justify-content-center">
                     <div className="spinner-border" role="status">
@@ -101,16 +107,16 @@ const EmpleadosList = () => {
                                     <td data-label="Email">{employee.Email}</td>
                                     <td>
                                         <button
-                                            className="edit-button"
+                                             className="btn btn-sm btn-warning edit-button"
                                             onClick={() => handleEdit(employee.Id_empleado)}
                                         >
-                                            Editar
+                                            <i className="fas fa-edit"></i>
                                         </button>
                                         <button
-                                            className="delete-button"
+                                            className="btn btn-sm btn-danger delete-button"
                                             onClick={() => handleDelete(employee.Id_empleado)}
                                         >
-                                            Eliminar
+                                            <i className="fas fa-trash-alt"></i>
                                         </button>
                                     </td>
                                 </tr>
@@ -119,7 +125,7 @@ const EmpleadosList = () => {
                     </table>
                 </div>
             )}
-    
+
             {/* Modal de Edición */}
             <EditarEmpleadoModal
                 show={showEditModal}
@@ -129,7 +135,7 @@ const EmpleadosList = () => {
             />
         </div>
     );
-    
+
 };
 
 export default EmpleadosList;

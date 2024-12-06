@@ -17,6 +17,12 @@ main {
 
 }
 
+h2, .title-list{
+  margin: 1rem 0;
+  color: #2c3e50;
+  text-align: center;
+}
+
 
 /* Contenedor de contenido con un desenfoque sutil para mejorar la legibilidad */
 
@@ -90,4 +96,13 @@ main {
   font-size: 2rem;
   color: #2c3e50;
   margin: 1rem 0;
+}
+
+.list-title, h2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+
+
 }

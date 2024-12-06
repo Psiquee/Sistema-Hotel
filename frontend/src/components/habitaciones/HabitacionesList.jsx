@@ -4,6 +4,7 @@ import { getHabitaciones } from '../../api/habitacionesApi';
 import EditarHabitacionModal from './EditarHabitacionModal'; // Componente de edición
 import useLoading from '../../hooks/useLoading'; // Hook para manejo de carga
 import useDelete from '../../hooks/useDelete'; // Hook para manejo de eliminación
+import '../../styles/Habitaciones.css';
 
 const HabitacionesList = () => {
   const [habitaciones, setHabitaciones] = useState([]);
@@ -12,7 +13,7 @@ const HabitacionesList = () => {
   const [selectedHabitacionId, setSelectedHabitacionId] = useState(null);
   const navigate = useNavigate();
 
- 
+
   useEffect(() => {
     const fetchHabitaciones = async () => {
       startLoading();
@@ -26,9 +27,9 @@ const HabitacionesList = () => {
       }
     };
     fetchHabitaciones();
-  }, []); 
-  
-  
+  }, []);
+
+
 
   const { deleteItem } = useDelete(
     'http://localhost:3001/api/habitaciones',
@@ -65,11 +66,16 @@ const HabitacionesList = () => {
   };
 
   return (
-    <div>
-      <h2 id="list-title">Lista de Habitaciones</h2>
-      <button className="add-button" onClick={handleAddHabitacion}>
-        Agregar Habitacion
-      </button>
+    <div className="container mt-5 px-2">
+      <div className="mb-2 d-flex justify-content-between align-items-center">
+        <h2>
+          <i className="fas fa-bed me-3"></i> Lista de Habitaciones
+        </h2>
+        <button className="add-button btn btn-success my-3" onClick={handleAddHabitacion}>
+          Agregar Habitacion
+        </button>
+      </div>
+
       {loading ? (
         <div className="d-flex justify-content-center">
           <div className="spinner-border" role="status">
@@ -79,7 +85,8 @@ const HabitacionesList = () => {
       ) : habitaciones.length === 0 ? (
         <p>No hay habitaciones registradas.</p>
       ) : (
-        <table>
+        <div className="table-responsive">
+         <table className="table table-borderless table-hover">
           <thead>
             <tr>
               <th>ID</th>
@@ -92,7 +99,7 @@ const HabitacionesList = () => {
           </thead>
           <tbody>
             {habitaciones.map((habitacion) => (
-              
+
               <tr key={habitacion.Id_habitacion}>
                 <td>{habitacion.Id_habitacion}</td>
                 <td>{habitacion.Num_habitacion}</td>
@@ -101,25 +108,26 @@ const HabitacionesList = () => {
                 <td>{habitacion.Estado}</td>
                 <td>
                   <button
-                    className="edit-button"
+                    className="btn btn-sm btn-warning edit-button"
                     onClick={() => handleEdit(habitacion.Id_habitacion)}
                   >
-                    Editar
+                    <i className="fas fa-edit"></i>
                   </button>
                   <button
-                    className="delete-button"
+                     className="btn btn-sm btn-danger delete-button"
                     onClick={() => handleDelete(habitacion.Id_habitacion)}
                   >
-                    Eliminar
+                   <i className="fas fa-trash-alt"></i>
                   </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+        </div>
       )}
 
-     
+
       <EditarHabitacionModal
         show={showEditModal}
         handleClose={() => setShowEditModal(false)}

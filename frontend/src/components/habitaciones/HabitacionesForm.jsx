@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import useAdd from '../../hooks/useAdd';  
 import useEdit from '../../hooks/useEdit'; 
 import { getHabitacionPorId } from '../../api/habitacionesApi'; 
+import '../../styles/Habitaciones.css';
 
 const HabitacionForm = () => {
     const { id } = useParams();  
@@ -78,10 +79,12 @@ const HabitacionForm = () => {
 
     return (
         <div>
-            <h2 id='list-title'>Datos de la Habitación</h2>
+         
             <form id='form-habitaciones' onSubmit={handleSubmit}>
+            <h2 className="text-center mb-4"><i className="fas fa-bed me-3"></i> Datos de la Habitación            
+            </h2>
                 <div>
-                    <label style={{ color: 'white' }}>Número de Habitación</label>
+                    <label>Número de Habitación</label>
                     <input
                         type="number" 
                         name="Num_habitacion"
@@ -90,7 +93,7 @@ const HabitacionForm = () => {
                     />
                 </div>
                 <div>
-                    <label style={{ color: 'white' }}>Tipo de Habitación</label>
+                    <label>Tipo de Habitación</label>
                     <select
                         name="Tipo_habitacion"
                         value={habitacion.Tipo_habitacion}
@@ -103,7 +106,7 @@ const HabitacionForm = () => {
                     </select>
                 </div>
                 <div>
-                    <label style={{ color: 'white' }}>Precio por Noche</label>
+                    <label>Precio por Noche</label>
                     <input
                         type="number" 
                         name="Precio_noche"
@@ -112,7 +115,7 @@ const HabitacionForm = () => {
                     />
                 </div>
                 <div>
-                    <label style={{ color: 'white' }}>Estado</label>
+                    <label>Estado</label>
                     <select
                         name="Estado"
                         value={habitacion.Estado}

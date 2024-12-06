@@ -76,9 +76,12 @@ const EmpleadosForm = () => {
       
 
       return (
-        <div id="form-employees">
-            <h2>Datos del Empleado</h2>
-            <form onSubmit={handleSubmit}>
+        <div>
+            
+            <form  id='form-employees' onSubmit={handleSubmit}>
+            <h2 id="form-title">
+                    <i className="fas fa-user-tie me-2"></i> Datos del Empleado
+                </h2>
                 <div>
                     <label>Nombre</label>
                     <input

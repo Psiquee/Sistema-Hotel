@@ -86,6 +86,7 @@ const HuespedesList = () => {
             <tr>
               <th>ID</th>
               <th>Nombre</th>
+              <th>Apellido</th>
               <th>Dirección</th>
               <th>Teléfono</th>
               <th>Email</th>
@@ -98,6 +99,7 @@ const HuespedesList = () => {
                 <tr key={huesped.Id_huesped}>
                   <td data-label="ID">{huesped.Id_huesped}</td>
                   <td data-label="Nombre">{huesped.Nombre}</td>
+                  <td data-label="Apellido">{huesped.Apellido}</td>
                   <td data-label="Dirección">{huesped.Direccion}</td>
                   <td data-label="Teléfono">{huesped.Telefono}</td>
                   <td data-label="Email">{huesped.Mail}</td>

@@ -22,7 +22,7 @@ Esta documentación te guiará a realizar diferentes consultas hacia la API.
   - [GET pagos por ID](#get-pagos-por-id)
   - [POST huespedes](#post-huespedes)
   - [PATCH habitaciones por id](#patch-habitaciones-por-id)
-  - [DELETE de generos](#delete-de-generos)
+  - [DELETE de reservas](#delete-de-reservas)
 
 
 
@@ -30,7 +30,7 @@ Esta documentación te guiará a realizar diferentes consultas hacia la API.
 
 ## Base de datos
 En MySQL ejecuta el archivo **database.sql** que se encuentra en la carpeta **db**
-<img src="" alt="diagrama flujo" width="100%" />
+<img src="diagrama-sistemahotel.jpeg" alt="diagrama flujo" width="100%" />
 
 ## .env
 Deberás crear en tu carpeta raíz un archivo de conexion a tu base de datos con nombre **".env"** donde incluirás las siguientes variables con tu informacion local:

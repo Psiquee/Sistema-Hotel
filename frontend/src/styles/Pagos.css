@@ -1,6 +1,59 @@
-
-/* El botón de envío ocupa ambas columnas */
-#form-pagos .button-container {
+/* Estilo para el formulario de PAGOS */
+#form-pagos {
+    background-color: #b0b7bf;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.603);
+    max-width: 600px;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* Dos columnas para los campos */
+    gap: 1rem;
+    grid-template-rows: auto; /* Se ajusta automáticamente la altura de las filas */
+  }
+  
+  /* Título centrado y ocupa las dos columnas */
+  #form-pagos h2 {
+    grid-column: span 2;  /* Ocupa ambas columnas */
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Contenedor de cada campo del formulario */
+  #form-pagos div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.8rem;
+  }
+  
+  /* Estilo de las etiquetas */
+  #form-pagos label {
+    font-size: 0.9rem;
+    color: #2c3e50;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+  }
+  
+  /* Estilo para los campos de entrada (input y select) */
+  #form-pagos input,
+  #form-pagos select {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #2c3e50;
+  }
+  
+  #form-pagos input:focus,
+  #form-pagos select:focus {
+    outline: none;
+    border-color: #007bff; /* Resalta el borde cuando está enfocado */
+  }
+  
+  /* El botón de envío ocupa ambas columnas */
+  #form-pagos .button-container {
     grid-column: span 2;  /* Asegura que el contenedor ocupe ambas columnas */
     display: flex;
     justify-content: center; /* Centra el botón */
@@ -32,3 +85,5 @@
       grid-template-columns: 1fr; /* Una sola columna */
     }
   }
+  
+  

@@ -85,8 +85,8 @@ const PagosForm = () => {
 
    
       <form id="form-pagos" onSubmit={handleSubmit}>
-      <h2 className="text-center mb-4">{id ? "Editar Pago" : "Agregar Nuevo Pago"}
-        <i className="fas fa-money-bill-wave me-2"></i> Agregar Nuevo Pago
+      <h2 className="text-center mb-4"> <i className="fas fa-money-bill-wave me-2"></i> {id ? "Editar Pago" : "Agregar Nuevo Pago"}
+       
       </h2>
 
         <div>

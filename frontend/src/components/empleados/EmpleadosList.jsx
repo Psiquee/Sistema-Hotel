@@ -65,7 +65,7 @@ const EmpleadosList = () => {
         <div className="container mt-5 px-2">
 
             <div className="mb-2 d-flex justify-content-between align-items-center">
-                <h2 className="list-title">
+                <h2>
                     <i class="fas fa-users me-2"></i>
                     Lista de Empleados
                 </h2>

@@ -106,3 +106,9 @@ h2, .title-list{
 
 
 }
+
+@media (max-width: 768px) {
+  .home-container {
+  text-align: center;
+  }
+}

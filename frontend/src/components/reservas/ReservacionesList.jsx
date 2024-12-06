@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getReservas } from '../../api/reservacionesApi';
-import EditarReservaModal from './EditarReservaModal'; 
+import EditarReservaModal from './EditarReservaModal';
 import useLoading from '../../hooks/useLoading';
 import useDelete from '../../hooks/useDelete';
 
@@ -31,7 +31,7 @@ const ReservasList = () => {
   const { deleteItem } = useDelete('http://localhost:3001/api/reservas', 'Reserva eliminada exitosamente');
 
   const handleAddReserva = () => {
-    navigate('/add-reservation'); 
+    navigate('/add-reservation');
   };
 
   const handleEdit = (id) => {
@@ -58,11 +58,17 @@ const ReservasList = () => {
   };
 
   return (
-    <div>
-      <h2 id="list-title">Lista de Reservas</h2>
-      <button className="add-button" onClick={handleAddReserva}>
-        Agregar Reserva
-      </button>
+    <div className="container mt-5 px-2">
+      <div className="mb-2 d-flex justify-content-between align-items-center">
+        <h2 id="list-title">
+          <i className="fas fa-calendar-alt me-3"></i> Lista de Reservas
+        </h2>
+        <button className="add-button btn btn-success my-3" onClick={handleAddReserva}>
+          Agregar Reserva
+        </button>
+      </div>
+
+
       {loading ? (
         <div className="d-flex justify-content-center">
           <div className="spinner-border" role="status">
@@ -73,38 +79,40 @@ const ReservasList = () => {
         <p>No hay reservas registradas.</p>
       ) : (
         <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Huésped</th>
-            <th>Habitación</th>
-            <th>Fecha Llegada</th>
-            <th>Fecha Salida</th>
-            <th>Número de Noches</th>
-            <th>Precio Total</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {reservas.map((reserva) => (
-            <tr key={reserva.Id_reserva}>
-              <td>{reserva.Id_reserva}</td>
-              <td>{reserva.Id_huesped}</td>
-              <td>{reserva.Id_habitacion}</td>
-              <td>{new Date(reserva.Fecha_llegada).toLocaleDateString()}</td>
-              <td>{new Date(reserva.Fecha_salida).toLocaleDateString()}</td>
-              <td>{reserva.Num_noches}</td>
-              <td>{reserva.Precio_total}</td>
-              <td>{reserva.Estado_reserva}</td>
-              <td>
-                <button onClick={() => handleEdit(reserva.Id_reserva)}>Editar</button>
-                <button onClick={() => handleDelete(reserva.Id_reserva)}>Eliminar</button>
-              </td>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Huésped</th>
+              <th>Habitación</th>
+              <th>Fecha Llegada</th>
+              <th>Fecha Salida</th>
+              <th>Número de Noches</th>
+              <th>Precio Total</th>
+              <th>Estado</th>
+              <th>Acciones</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {reservas.map((reserva) => (
+              <tr key={reserva.Id_reserva}>
+                <td data-label='ID de Reserva'>{reserva.Id_reserva}</td>
+                <td data-label='ID de Huésped'>{reserva.Id_huesped}</td>
+                <td data-label='ID de Habitación'>{reserva.Id_habitacion}</td>
+                <td data-label='Fecha de Llegada'>{new Date(reserva.Fecha_llegada).toLocaleDateString()}</td>
+                <td daata-label='Fecha de Salida'>{new Date(reserva.Fecha_salida).toLocaleDateString()}</td>
+                <td data-label='Número de Noches'>{reserva.Num_noches}</td>
+                <td data-label='Precio Total'>{reserva.Precio_total}</td>
+                <td data-label='Estado'>{reserva.Estado_reserva}</td>
+                <td>
+                  <button className="btn btn-sm btn-warning edit-button" onClick={() => handleEdit(reserva.Id_reserva)}>
+                    <i className="fas fa-edit"></i></button>
+                  <button className="btn btn-sm btn-danger delete-button" onClick={() => handleDelete(reserva.Id_reserva)}>
+                    <i className="fas fa-trash-alt"></i></button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
       {showEditModal && (
         <EditarReservaModal

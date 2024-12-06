@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import useAdd from "../../hooks/useAdd";
 import useEdit from "../../hooks/useEdit";
 import { getReservaPorId } from "../../api/reservacionesApi";
+import '../../styles/Reservas.css';
 
 const ReservacionesForm = () => {
   const { id } = useParams();
@@ -27,7 +28,7 @@ const ReservacionesForm = () => {
     "Reserva actualizada correctamente"
   );
 
-  
+
   useEffect(() => {
     if (id) {
       setLoading(true);
@@ -79,11 +80,14 @@ const ReservacionesForm = () => {
     );
 
   return (
-    <div>
-      <h2>{id ? "Editar Reserva" : "Agregar Nueva Reserva"}</h2>
-      <form onSubmit={handleSubmit}>
+   
+      <form id="form-reservas" onSubmit={handleSubmit}>
+        <h2><i className="fas fa-calendar-alt me-3"></i>
+          {id ? "Editar Reserva" : "Agregar Nueva Reserva"}
+        </h2>
+
         <div>
-          <label style={{ color: "white" }}>Id Huésped</label>
+          <label>Id Huésped</label>
           <input
             type="text"
             name="Id_huesped"
@@ -93,7 +97,7 @@ const ReservacionesForm = () => {
           />
         </div>
         <div>
-          <label style={{ color: "white" }}>Id Habitación</label>
+          <label>Id Habitación</label>
           <input
             type="text"
             name="Id_habitacion"
@@ -103,7 +107,7 @@ const ReservacionesForm = () => {
           />
         </div>
         <div>
-          <label style={{ color: "white" }}>Fecha Llegada</label>
+          <label>Fecha Llegada</label>
           <input
             type="date"
             name="Fecha_llegada"
@@ -113,7 +117,7 @@ const ReservacionesForm = () => {
           />
         </div>
         <div>
-          <label style={{ color: "white" }}>Fecha Salida</label>
+          <label>Fecha Salida</label>
           <input
             type="date"
             name="Fecha_salida"
@@ -123,7 +127,7 @@ const ReservacionesForm = () => {
           />
         </div>
         <div>
-          <label style={{ color: "white" }}>Número de Noches</label>
+          <label>Número de Noches</label>
           <input
             type="number"
             name="Num_noches"
@@ -133,7 +137,7 @@ const ReservacionesForm = () => {
           />
         </div>
         <div>
-          <label style={{ color: "white" }}>Precio Total</label>
+          <label>Precio Total</label>
           <input
             type="number"
             name="Precio_total"
@@ -143,7 +147,7 @@ const ReservacionesForm = () => {
           />
         </div>
         <div>
-          <label style={{ color: "white" }}>Estado Reserva</label>
+          <label>Estado Reserva</label>
           <select
             name="Estado_reserva"
             value={formData.Estado_reserva}
@@ -154,9 +158,11 @@ const ReservacionesForm = () => {
             <option value="FINALIZADO">Finalizado</option>
           </select>
         </div>
+        <div className="button-container">
         <button type="submit">{id ? "Actualizar" : "Agregar"}</button>
+        </div>
       </form>
-    </div>
+  
   );
 };
 

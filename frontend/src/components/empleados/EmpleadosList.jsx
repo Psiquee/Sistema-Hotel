@@ -2,30 +2,28 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getEmployees } from '../../api/empleadosApi';
 import EditarEmpleadoModal from './EditarEmpleadoModal';
-import useLoading from '../../hooks/useLoading';  // Importar el hook de carga
-import useDelete from '../../hooks/useDelete';  
+import useLoading from '../../hooks/useLoading'; // Importar el hook de carga
+import useDelete from '../../hooks/useDelete';
 import '../../styles/Empleados.css';
-
-
 
 const EmpleadosList = () => {
     const [employees, setEmployees] = useState([]);
-    const { loading, startLoading, stopLoading } = useLoading();  
-    const [showEditModal, setShowEditModal] = useState(false); 
+    const { loading, startLoading, stopLoading } = useLoading();
+    const [showEditModal, setShowEditModal] = useState(false);
     const [selectedEmployeeId, setSelectedEmployeeId] = useState(null); // almaceno el id del seleccionado
     const navigate = useNavigate();
 
     // usamos hook para obtener empleados
     useEffect(() => {
         const fetchEmployees = async () => {
-            startLoading(); 
+            startLoading();
             try {
                 const data = await getEmployees();
                 setEmployees(data);
             } catch (error) {
                 console.error('Error al cargar empleados:', error);
             } finally {
-                stopLoading(); 
+                stopLoading();
             }
         };
         fetchEmployees();
@@ -43,21 +41,21 @@ const EmpleadosList = () => {
     };
 
     const handleDelete = async (id) => {
-        await deleteItem(id); //  hook para eliminar
+        await deleteItem(id); // hook para eliminar
         setEmployees(employees.filter((employee) => employee.Id_empleado !== id)); // actualizamos
     };
 
-    // funcion actualizar
+    // función actualizar
     const updateEmployeeList = () => {
         const fetchEmployees = async () => {
-            startLoading();  
+            startLoading();
             try {
                 const data = await getEmployees();
                 setEmployees(data);
             } catch (error) {
                 console.error('Error al cargar empleados:', error);
             } finally {
-                stopLoading();  
+                stopLoading();
             }
         };
         fetchEmployees();
@@ -69,54 +67,57 @@ const EmpleadosList = () => {
             <button className="add-button" onClick={handleAddEmployee}>
                 Agregar Empleado
             </button>
+
             {loading ? (
-        <div className="d-flex justify-content-center">
-          <div className="spinner-border" role="status">
-            <span className="visually-hidden">Cargando...</span>
-          </div>
-        </div>
-      ) : employees.length === 0 ? (
-        <p>No hay empleados registrados.</p>
-      ) : (
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Cargo</th>
-                            <th>Teléfono</th>
-                            <th>Email</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {employees.map((employee) => (
-                            <tr key={employee.Id_empleado}>
-                                <td>{employee.Id_empleado}</td>
-                                <td>{employee.Nombre}</td>
-                                <td>{employee.Apellido}</td>
-                                <td>{employee.Cargo}</td>
-                                <td>{employee.Telefono}</td>
-                                <td>{employee.Email}</td>
-                                <td>
-                                    <button
-                                        className="edit-button"
-                                        onClick={() => handleEdit(employee.Id_empleado)}
-                                    >
-                                        Editar
-                                    </button>
-                                    <button
-                                        className="delete-button"
-                                        onClick={() => handleDelete(employee.Id_empleado)}
-                                    >
-                                        Eliminar
-                                    </button>
-                                </td>
+                <div className="d-flex justify-content-center">
+                    <div className="spinner-border" role="status">
+                        <span className="visually-hidden">Cargando...</span>
+                    </div>
+                </div>
+            ) : employees.length === 0 ? (
+                <p>No hay empleados registrados.</p>
+            ) : (
+                <div className="table-responsive">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Cargo</th>
+                                <th>Teléfono</th>
+                                <th>Email</th>
+                                <th>Acciones</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {employees.map((employee) => (
+                                <tr key={employee.Id_empleado}>
+                                    <td data-label="ID">{employee.Id_empleado}</td>
+                                    <td data-label="Nombre">{employee.Nombre}</td>
+                                    <td data-label="Apellido">{employee.Apellido}</td>
+                                    <td data-label="Cargo">{employee.Cargo}</td>
+                                    <td data-label="Teléfono">{employee.Telefono}</td>
+                                    <td data-label="Email">{employee.Email}</td>
+                                    <td>
+                                        <button
+                                            className="edit-button"
+                                            onClick={() => handleEdit(employee.Id_empleado)}
+                                        >
+                                            Editar
+                                        </button>
+                                        <button
+                                            className="delete-button"
+                                            onClick={() => handleDelete(employee.Id_empleado)}
+                                        >
+                                            Eliminar
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             )}
 
             {/* Modal de Edición */}
@@ -131,3 +132,4 @@ const EmpleadosList = () => {
 };
 
 export default EmpleadosList;
+

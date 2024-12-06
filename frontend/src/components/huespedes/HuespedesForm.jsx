@@ -35,7 +35,7 @@ const HuespedesForm = () => {
         }
     }, [id]);
 
-    // Envío del formulario
+    // Envio del formulario
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);

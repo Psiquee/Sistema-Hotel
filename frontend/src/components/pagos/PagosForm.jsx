@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import useAdd from "../../hooks/useAdd";
 import useEdit from "../../hooks/useEdit";
 import { getPagoPorId } from "../../api/pagosApi";
+import '../../styles/Pagos.css';
 
 const PagosForm = () => {
   const { id } = useParams();
@@ -60,13 +61,13 @@ const PagosForm = () => {
     try {
       if (id) {
         await editItem(id, formData); //  formData para editar
-      } 
+      }
       else {
         await addItem(formData); //  formData para agregar
       }
       setLoading(false);
       navigate("/payments"); // redirige
-    } 
+    }
     catch (error) {
       console.error("Error al guardar el pago:", error);
       setLoading(false);
@@ -81,11 +82,15 @@ const PagosForm = () => {
     );
 
   return (
-    <div>
-      <h2>{id ? "Editar Pago" : "Agregar Nuevo Pago"}</h2>
-      <form onSubmit={handleSubmit}>
+
+   
+      <form id="form-pagos" onSubmit={handleSubmit}>
+      <h2 className="text-center mb-4">{id ? "Editar Pago" : "Agregar Nuevo Pago"}
+        <i className="fas fa-money-bill-wave me-2"></i> Agregar Nuevo Pago
+      </h2>
+
         <div>
-          <label style={{ color: "white" }}>Id Reserva</label>
+          <label>Id Reserva</label>
           <input
             type="text"
             name="Id_reserva"
@@ -95,7 +100,7 @@ const PagosForm = () => {
           />
         </div>
         <div>
-          <label style={{ color: "white" }}>Fecha Pago</label>
+          <label>Fecha Pago</label>
           <input
             type="date"
             name="Fecha_pago"
@@ -105,7 +110,7 @@ const PagosForm = () => {
           />
         </div>
         <div>
-          <label style={{ color: "white" }}>Monto Pago</label>
+          <label>Monto Pago</label>
           <input
             type="number"
             name="Monto_pago"
@@ -115,7 +120,7 @@ const PagosForm = () => {
           />
         </div>
         <div>
-          <label style={{ color: "white" }}>Método de Pago</label>
+          <label>Método de Pago</label>
           <select
             name="Metodo_pago"
             value={formData.Metodo_pago}
@@ -127,7 +132,7 @@ const PagosForm = () => {
           </select>
         </div>
         <div>
-          <label style={{ color: "white" }}>Id Empleado</label>
+          <label>Id Empleado</label>
           <input
             type="text"
             name="Id_empleado"
@@ -136,9 +141,12 @@ const PagosForm = () => {
             required
           />
         </div>
+        <div  className="button-container">
         <button type="submit">{id ? "Actualizar" : "Agregar"}</button>
+        </div>
+      
       </form>
-    </div>
+
   );
 };
 

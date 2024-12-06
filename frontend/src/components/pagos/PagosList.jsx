@@ -4,6 +4,7 @@ import { getPagos } from '../../api/pagosApi';
 import EditarPagoModal from './EditarPagoModal'; 
 import useLoading from '../../hooks/useLoading'; 
 import useDelete from '../../hooks/useDelete'; 
+import '../../styles/Pagos.css';
 
 const PagosList = () => {
   const [pagos, setPagos] = useState([]);

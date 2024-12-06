@@ -67,7 +67,7 @@ const EmpleadosList = () => {
             <button className="add-button" onClick={handleAddEmployee}>
                 Agregar Empleado
             </button>
-
+    
             {loading ? (
                 <div className="d-flex justify-content-center">
                     <div className="spinner-border" role="status">
@@ -119,7 +119,7 @@ const EmpleadosList = () => {
                     </table>
                 </div>
             )}
-
+    
             {/* Modal de Edición */}
             <EditarEmpleadoModal
                 show={showEditModal}
@@ -129,6 +129,7 @@ const EmpleadosList = () => {
             />
         </div>
     );
+    
 };
 
 export default EmpleadosList;

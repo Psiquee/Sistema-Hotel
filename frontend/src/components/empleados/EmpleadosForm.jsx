@@ -75,12 +75,12 @@ const EmpleadosForm = () => {
       );
       
 
-    return (
-        <div>
-            <h2 id='list-title'>Datos del Empleado</h2>
-            <form id='form-employees ' onSubmit={handleSubmit}>
+      return (
+        <div id="form-employees">
+            <h2>Datos del Empleado</h2>
+            <form onSubmit={handleSubmit}>
                 <div>
-                    <label style={{ color: 'white' }}>Nombre</label>
+                    <label>Nombre</label>
                     <input
                         type="text"
                         name="Nombre"
@@ -89,7 +89,7 @@ const EmpleadosForm = () => {
                     />
                 </div>
                 <div>
-                    <label style={{ color: 'white' }}>Apellido</label>
+                    <label>Apellido</label>
                     <input
                         type="text"
                         name="Apellido"
@@ -98,7 +98,7 @@ const EmpleadosForm = () => {
                     />
                 </div>
                 <div>
-                    <label style={{ color: 'white' }}>Cargo</label>
+                    <label>Cargo</label>
                     <input
                         type="text"
                         name="Cargo"
@@ -107,7 +107,7 @@ const EmpleadosForm = () => {
                     />
                 </div>
                 <div>
-                    <label style={{ color: 'white' }}>Teléfono</label>
+                    <label>Teléfono</label>
                     <input
                         type="text"
                         name="Telefono"
@@ -115,8 +115,8 @@ const EmpleadosForm = () => {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
-                    <label style={{ color: 'white' }}>Email</label>
+                <div className="email-container">
+                    <label>Email</label>
                     <input
                         type="email"
                         name="Email"
@@ -124,13 +124,16 @@ const EmpleadosForm = () => {
                         onChange={handleChange}
                     />
                 </div>
-                <button type="submit">{id ? 'Actualizar' : 'Agregar'}</button>
+                <div className="button-container">
+                    <button type="submit">{id ? 'Actualizar' : 'Agregar'}</button>
+                </div>
             </form>
-
+    
             {addError && <div>{addError}</div>}
             {editError && <div>{editError}</div>}
         </div>
     );
+    
 };
 
 export default EmpleadosForm;

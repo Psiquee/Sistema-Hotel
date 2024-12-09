@@ -31,6 +31,7 @@
     color: #2c3e50;
     font-weight: bold;
     margin-bottom: 0.3rem;
+    width: 100%;
   }
   
   /* Estilo de los inputs */
@@ -89,14 +90,16 @@
   }
   /* Asegúrate de que la tabla no ocupe más del 100% del contenedor */
   .table {
-    width: 90%; 
-    table-layout: fixed; 
+    width: 100%; 
+     
   }
-  
+
+ 
   
   /* Para pantallas pequeñas, hacer el formulario de una sola columna */
   
-  @media (max-width: 768px) {
+  @media screen and (min-width: 600px) and (max-width: 1024px){
+    
     #form-guest {
       grid-template-columns: 1fr;
   
@@ -131,11 +134,9 @@
   
     tbody tr td::before {
       content: attr(data-label);
-      /* Agrega los encabezados como etiquetas */
       font-weight: bold;
       color: #2c3e50;
-      flex: 0 0 40%;
-      /* Controla el tamaño de las etiquetas */
+      flex: 0 0 50%;
       text-align: left;
     }
   

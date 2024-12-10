@@ -3,8 +3,10 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import useEdit from '../../hooks/useEdit';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const EditarHuespedModal = ({ show, handleClose, huespedId, updateHuespedList }) => {
-    const { editItem, loading, error } = useEdit('http://localhost:3001/api/huespedes', 'Huésped actualizado correctamente');
+    const { editItem, loading, error } =  useEdit(`${API_URL}/huespedes`, 'Huésped actualizado correctamente');
     const [huesped, setHuesped] = useState({
         Nombre: '',
         Apellido: '',
@@ -17,7 +19,7 @@ const EditarHuespedModal = ({ show, handleClose, huespedId, updateHuespedList })
         if (show && huespedId) {
             const fetchHuesped = async () => {
                 try {
-                    const response = await axios.get(`http://localhost:3001/api/huespedes/${huespedId}`);
+                    const response = await axios.get(`${API_URL}/huespedes/${huespedId}`);
                     if (response.data) {
                         setHuesped(response.data); //respuesta data
                     }

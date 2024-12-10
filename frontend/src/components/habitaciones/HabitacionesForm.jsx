@@ -6,6 +6,7 @@ import { getHabitacionPorId } from '../../api/habitacionesApi';
 import '../../styles/Habitaciones.css';
 
 const API_URL = process.env.REACT_APP_API_URL;
+
 const HabitacionForm = () => {
     const { id } = useParams();  
     const navigate = useNavigate();

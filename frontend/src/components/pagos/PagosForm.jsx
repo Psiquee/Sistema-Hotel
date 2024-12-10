@@ -5,6 +5,8 @@ import useEdit from "../../hooks/useEdit";
 import { getPagoPorId } from "../../api/pagosApi";
 import '../../styles/Pagos.css';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const PagosForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -18,11 +20,11 @@ const PagosForm = () => {
   const [loading, setLoading] = useState(false);
 
   const { addItem } = useAdd(
-    "http://localhost:3001/api/pagos",
+    `${API_URL}/pagos`,
     "Pago agregado correctamente"
   );
   const { editItem } = useEdit(
-    "http://localhost:3001/api/pagos",
+    `${API_URL}/pagos`,
     "Pago actualizado correctamente"
   );
 
@@ -83,69 +85,69 @@ const PagosForm = () => {
 
   return (
 
-   
-      <form id="form-pagos" onSubmit={handleSubmit}>
+
+    <form id="form-pagos" onSubmit={handleSubmit}>
       <h2 className="text-center mb-4"> <i className="fas fa-money-bill-wave me-2"></i> {id ? "Editar Pago" : "Agregar Nuevo Pago"}
-       
+
       </h2>
 
-        <div>
-          <label>Id Reserva</label>
-          <input
-            type="text"
-            name="Id_reserva"
-            value={formData.Id_reserva}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Fecha Pago</label>
-          <input
-            type="date"
-            name="Fecha_pago"
-            value={formData.Fecha_pago}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Monto Pago</label>
-          <input
-            type="number"
-            name="Monto_pago"
-            value={formData.Monto_pago}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Método de Pago</label>
-          <select
-            name="Metodo_pago"
-            value={formData.Metodo_pago}
-            onChange={handleChange}
-          >
-            <option value="EFECTIVO">Efectivo</option>
-            <option value="DÉBITO">Débito</option>
-            <option value="TRANSFERENCIA">Transferencia</option>
-          </select>
-        </div>
-        <div>
-          <label>Id Empleado</label>
-          <input
-            type="text"
-            name="Id_empleado"
-            value={formData.Id_empleado}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div  className="button-container">
+      <div>
+        <label>Id Reserva</label>
+        <input
+          type="text"
+          name="Id_reserva"
+          value={formData.Id_reserva}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div>
+        <label>Fecha Pago</label>
+        <input
+          type="date"
+          name="Fecha_pago"
+          value={formData.Fecha_pago}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div>
+        <label>Monto Pago</label>
+        <input
+          type="number"
+          name="Monto_pago"
+          value={formData.Monto_pago}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div>
+        <label>Método de Pago</label>
+        <select
+          name="Metodo_pago"
+          value={formData.Metodo_pago}
+          onChange={handleChange}
+        >
+          <option value="EFECTIVO">Efectivo</option>
+          <option value="DÉBITO">Débito</option>
+          <option value="TRANSFERENCIA">Transferencia</option>
+        </select>
+      </div>
+      <div>
+        <label>Id Empleado</label>
+        <input
+          type="text"
+          name="Id_empleado"
+          value={formData.Id_empleado}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="button-container">
         <button type="submit">{id ? "Actualizar" : "Agregar"}</button>
-        </div>
-      
-      </form>
+      </div>
+
+    </form>
 
   );
 };

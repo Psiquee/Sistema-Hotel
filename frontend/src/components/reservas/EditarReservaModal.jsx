@@ -3,8 +3,10 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import useEdit from '../../hooks/useEdit';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const EditarReservaModal = ({ show, handleClose, reservaId, updateReservaList }) => {
-  const { editItem, loading, error } = useEdit('http://localhost:3001/api/reservas', 'Reserva actualizada correctamente');
+  const { editItem, loading, error } = useEdit(`${API_URL}/reservas`, 'Reserva actualizada correctamente');
   const [reserva, setReserva] = useState({
     Id_huesped: '',
     Id_habitacion: '',
@@ -19,7 +21,7 @@ const EditarReservaModal = ({ show, handleClose, reservaId, updateReservaList })
     if (show && reservaId) {
       const fetchReserva = async () => {
         try {
-          const response = await axios.get(`http://localhost:3001/api/reservas/${reservaId}`);
+          const response = await axios.get(`${API_URL}/reservas/${reservaId}`);
           if (response.data) {
             setReserva(response.data); 
           }

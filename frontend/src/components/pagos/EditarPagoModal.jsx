@@ -3,8 +3,10 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import useEdit from '../../hooks/useEdit';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const EditarPagoModal = ({ show, handleClose, pagoId, updatePagoList }) => {
-    const { editItem, loading, error } = useEdit('http://localhost:3001/api/pagos', 'Pago actualizado correctamente');
+    const { editItem, loading, error } = useEdit(`${API_URL}/pagos`, 'Pago actualizado correctamente');
     const [pago, setPago] = useState({
         Id_reserva: '',
         Fecha_pago: '',
@@ -17,7 +19,7 @@ const EditarPagoModal = ({ show, handleClose, pagoId, updatePagoList }) => {
         if (show && pagoId) {
             const fetchPago = async () => {
                 try {
-                    const response = await axios.get(`http://localhost:3001/api/pagos/${pagoId}`);
+                    const response = await axios.get(`${API_URL}/pagos/${pagoId}`);
                     if (response.data) {
                         setPago(response.data); 
                     }

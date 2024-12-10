@@ -6,6 +6,8 @@ import useLoading from '../../hooks/useLoading';
 import useDelete from '../../hooks/useDelete';
 import '../../styles/Pagos.css';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const PagosList = () => {
   const [pagos, setPagos] = useState([]);
   const { loading, startLoading, stopLoading } = useLoading();
@@ -30,7 +32,7 @@ const PagosList = () => {
   }, []);
 
   const { deleteItem } = useDelete(
-    'http://localhost:3001/api/pagos',
+    `${API_URL}/pagos`,
     'Pago eliminado exitosamente'
   );
 

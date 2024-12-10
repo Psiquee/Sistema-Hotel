@@ -5,6 +5,8 @@ import useEdit from "../../hooks/useEdit";
 import { getReservaPorId } from "../../api/reservacionesApi";
 import '../../styles/Reservas.css';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const ReservacionesForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -20,11 +22,11 @@ const ReservacionesForm = () => {
   const [loading, setLoading] = useState(false);
 
   const { addItem } = useAdd(
-    "http://localhost:3001/api/reservas",
+    `${API_URL}/reservas`,
     "Reserva agregada correctamente"
   );
   const { editItem } = useEdit(
-    "http://localhost:3001/api/reservas",
+    `${API_URL}/reservas`,
     "Reserva actualizada correctamente"
   );
 

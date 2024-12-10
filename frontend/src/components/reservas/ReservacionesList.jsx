@@ -5,6 +5,8 @@ import EditarReservaModal from './EditarReservaModal';
 import useLoading from '../../hooks/useLoading';
 import useDelete from '../../hooks/useDelete';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const ReservasList = () => {
   const [reservas, setReservas] = useState([]);
   const { loading, startLoading, stopLoading } = useLoading();
@@ -28,7 +30,7 @@ const ReservasList = () => {
     fetchReservas();
   }, []);
 
-  const { deleteItem } = useDelete('http://localhost:3001/api/reservas', 'Reserva eliminada exitosamente');
+  const { deleteItem } = useDelete(`${API_URL}/reservas`, 'Reserva eliminada exitosamente');
 
   const handleAddReserva = () => {
     navigate('/add-reservation');

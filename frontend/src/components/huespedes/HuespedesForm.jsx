@@ -4,6 +4,8 @@ import useAdd from '../../hooks/useAdd';
 import useEdit from '../../hooks/useEdit';
 import { getHuespedPorId } from '../../api/huespedesApi';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const HuespedesForm = () => {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -16,8 +18,8 @@ const HuespedesForm = () => {
     });
     const [loading, setLoading] = useState(false);
 
-    const { addItem, error: addError } = useAdd('http://localhost:3001/api/huespedes', 'Huésped agregado correctamente');
-    const { editItem, error: editError } = useEdit('http://localhost:3001/api/huespedes', 'Huésped actualizado correctamente');
+    const { addItem, error: addError } = useAdd(`${API_URL}/huespedes`, 'Huésped agregado correctamente');
+    const { editItem, error: editError } = useEdit(`${API_URL}/huespedes`, 'Huésped actualizado correctamente');
 
     // Cargar datos para editar
     useEffect(() => {

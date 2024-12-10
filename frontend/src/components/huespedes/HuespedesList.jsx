@@ -6,6 +6,8 @@ import useLoading from '../../hooks/useLoading';
 import useDelete from '../../hooks/useDelete';
 import '../../styles/Huespedes.css';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const HuespedesList = () => {
   const [huespedes, setHuespedes] = useState([]);
   const { loading, startLoading, stopLoading } = useLoading();
@@ -30,7 +32,9 @@ const HuespedesList = () => {
     fetchHuespedes();
   }, []);
 
-  const { deleteItem } = useDelete('http://localhost:3001/api/huespedes', 'Huésped eliminado exitosamente');
+  const { deleteItem } = useDelete(
+    `${API_URL}/huespedes`,
+    'Huésped eliminado exitosamente');
 
   const handleAddHuesped = () => {
     navigate('/add-guest');

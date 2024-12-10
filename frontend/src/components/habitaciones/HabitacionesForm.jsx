@@ -5,6 +5,7 @@ import useEdit from '../../hooks/useEdit';
 import { getHabitacionPorId } from '../../api/habitacionesApi'; 
 import '../../styles/Habitaciones.css';
 
+const API_URL = process.env.REACT_APP_API_URL;
 const HabitacionForm = () => {
     const { id } = useParams();  
     const navigate = useNavigate();
@@ -16,8 +17,8 @@ const HabitacionForm = () => {
     });
     const [loading, setLoading] = useState(false);
 
-    const { addItem,  error: addError } = useAdd('http://localhost:3001/api/habitaciones', 'Habitacion agregada correctamente');
-    const { editItem,  error: editError } = useEdit('http://localhost:3001/api/habitaciones', 'Habitacion actualizado correctamente');
+    const { addItem,  error: addError } = useAdd(`${API_URL}/habitaciones`, 'Habitacion agregada correctamente');
+    const { editItem,  error: editError } = useEdit(`${API_URL}/habitaciones`, 'Habitacion actualizado correctamente');
 
     useEffect(() => {
         if (id) { 

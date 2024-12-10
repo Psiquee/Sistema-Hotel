@@ -32,7 +32,7 @@ const EmpleadosList = () => {
         fetchEmployees();
     }, []);
 
-    const { deleteItem } = useDelete(API_URL, 'Empleado eliminado exitosamente');
+    const { deleteItem } = useDelete(`${API_URL}/empleados`, 'Empleado eliminado exitosamente');
 
     const handleAddEmployee = () => {
         navigate('/add-employee');

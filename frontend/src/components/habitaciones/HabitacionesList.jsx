@@ -6,6 +6,8 @@ import useLoading from '../../hooks/useLoading'; // Hook para manejo de carga
 import useDelete from '../../hooks/useDelete'; // Hook para manejo de eliminación
 import '../../styles/Habitaciones.css';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const HabitacionesList = () => {
   const [habitaciones, setHabitaciones] = useState([]);
   const { loading, startLoading, stopLoading } = useLoading();
@@ -32,7 +34,7 @@ const HabitacionesList = () => {
 
 
   const { deleteItem } = useDelete(
-    'http://localhost:3001/api/habitaciones',
+    `${API_URL}/habitaciones`,
     'Habitación eliminada exitosamente'
   );
 

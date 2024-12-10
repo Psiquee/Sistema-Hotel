@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
-import useEdit from '../../hooks/useEdit'; // Suponiendo que tienes un hook de edición similar
+import useEdit from '../../hooks/useEdit'; 
+
+const API_URL = process.env.REACT_APP_API_URL;
 
 const EditarHabitacionModal = ({ show, handleClose, habitacionId, updateHabitacionesList }) => {
-    const { editItem, loading, error } = useEdit('http://localhost:3001/api/habitaciones', 'Habitación actualizada correctamente');
+    const { editItem, loading, error } = useEdit(`${API_URL}/habitaciones`, 'Habitación actualizada correctamente');
     const [habitacion, setHabitacion] = useState({
         Num_habitacion: '',
         Tipo_habitacion: '',
@@ -17,7 +19,7 @@ const EditarHabitacionModal = ({ show, handleClose, habitacionId, updateHabitaci
         if (habitacionId) {
             const fetchHabitacion = async () => {
                 try {
-                    const response = await axios.get(`http://localhost:3001/api/habitaciones/${habitacionId}`);
+                    const response = await axios.get(`${API_URL}/habitaciones/${habitacionId}`);
                     setHabitacion(response.data);
                 } catch (err) {
                     console.error('Error al cargar la habitación:', err);

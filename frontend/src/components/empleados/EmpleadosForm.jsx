@@ -6,6 +6,8 @@ import useEdit from '../../hooks/useEdit';
 import { getEmployeeById } from '../../api/empleadosApi'; 
 import '../../styles/Empleados.css';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const EmpleadosForm = () => {
     const { id } = useParams();  
     const navigate = useNavigate();
@@ -17,8 +19,8 @@ const EmpleadosForm = () => {
         Email: ''
     });
     const [loading, setLoading] = useState(false);
-    const { addItem,  error: addError } = useAdd('http://localhost:3001/api/empleados', 'Empleado agregado correctamente');
-    const { editItem,  error: editError } = useEdit('http://localhost:3001/api/empleados', 'Empleado actualizado correctamente');
+    const { addItem,  error: addError } = useAdd(`${API_URL}/empleados`, 'Empleado agregado correctamente');
+    const { editItem,  error: editError } = useEdit(`${API_URL}/empleados`, 'Empleado actualizado correctamente');
 
   
     

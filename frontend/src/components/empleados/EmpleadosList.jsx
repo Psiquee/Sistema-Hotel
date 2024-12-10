@@ -7,6 +7,8 @@ import useDelete from '../../hooks/useDelete';
 import '../../styles/Empleados.css';
 
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const EmpleadosList = () => {
     const [employees, setEmployees] = useState([]);
     const { loading, startLoading, stopLoading } = useLoading();
@@ -30,7 +32,7 @@ const EmpleadosList = () => {
         fetchEmployees();
     }, []);
 
-    const { deleteItem } = useDelete('http://localhost:3001/api/empleados', 'Empleado eliminado exitosamente');
+    const { deleteItem } = useDelete(API_URL, 'Empleado eliminado exitosamente');
 
     const handleAddEmployee = () => {
         navigate('/add-employee');

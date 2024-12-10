@@ -3,8 +3,10 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import useEdit from '../../hooks/useEdit';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const EditarEmpleadoModal = ({ show, handleClose, employeeId, updateEmployeeList }) => {
-    const { editItem, loading, error } = useEdit('http://localhost:3001/api/empleados', 'Empleado actualizado correctamente');
+    const { editItem, loading, error } = useEdit(`${API_URL}/empleados`, 'Empleado actualizado correctamente');
     const [employee, setEmployee] = useState({
         Nombre: '',
         Apellido: '',
@@ -17,7 +19,7 @@ const EditarEmpleadoModal = ({ show, handleClose, employeeId, updateEmployeeList
         if (employeeId) {
             const fetchEmployee = async () => {
                 try {
-                    const response = await axios.get(`http://localhost:3001/api/empleados/${employeeId}`);
+                    const response = await axios.get(`${API_URL}/empleados/${employeeId}`);
                     setEmployee(response.data);
                 } catch (err) {
                     console.error('Error al cargar el empleado:', err);

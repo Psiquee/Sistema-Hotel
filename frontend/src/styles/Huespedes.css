@@ -88,7 +88,7 @@
     box-sizing: border-box;
     margin: 0 auto;  
   }
-  /* Asegúrate de que la tabla no ocupe más del 100% del contenedor */
+  /* La tabla no ocupe más del 100% del contenedor */
   .table {
     width: 100%; 
      
@@ -129,7 +129,7 @@
       justify-content: space-between;
       padding: 0.5rem;
       width: 100%;
-      /* Asegura que las celdas ocupen todo el ancho */
+     
     }
   
     tbody tr td::before {

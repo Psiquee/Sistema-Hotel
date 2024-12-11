@@ -2,9 +2,9 @@
 .App {
   text-align: center;
   width: auto;
-  min-height: 100vh; /* Asegura que la altura mínima de la página cubra todo el contenido */
+  min-height: 100vh; 
   display: flex;
-  flex-direction: column; /* Alinea los elementos de forma vertical */
+  flex-direction: column; 
 
 }
 

@@ -18,6 +18,7 @@ import './styles/Styles.css';
 import './App.css';
 import Footer from './components/layout/Footer';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+//import de componente error 404
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-       
+
         <Route path="/guests" element={<HuespedesList />} />
         <Route path="/add-guest" element={<HuespedesForm />} />
 
@@ -33,17 +34,20 @@ function App() {
         <Route path="/add-employee" element={<EmpleadosForm />} />
         <Route path="/add-employee?id=:id" element={<EmpleadosForm />} />
 
-    
+
         <Route path="/reservations" element={<ReservacionesList />} />
         <Route path="/add-reservation" element={<ReservacionesForm />} />
 
-        
+
         <Route path="/payments" element={<PagosList />} />
         <Route path="/add-payment" element={<PagosForm />} />
 
-        
+
         <Route path="/rooms" element={<HabitacionesList />} />
         <Route path="/add-room" element={<HabitacionesForm />} />
+
+        {/* Ruta para páginas no encontradas */}
+
       </Routes>
       <Footer />
     </Router>

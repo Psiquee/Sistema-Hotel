@@ -13,12 +13,12 @@ import HabitacionesList from './components/habitaciones/HabitacionesList';
 import HabitacionesForm from './components/habitaciones/HabitacionesForm';
 import PagosList from './components/pagos/PagosList';
 import PagosForm from './components/pagos/PagosForm';
+import Footer from './components/layout/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/Styles.css';
 import './App.css';
-import Footer from './components/layout/Footer';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-//import de componente error 404
+import Error404 from './components/error404/Error404';
 
 function App() {
   return (
@@ -47,6 +47,7 @@ function App() {
         <Route path="/add-room" element={<HabitacionesForm />} />
 
         {/* Ruta para páginas no encontradas */}
+        <Route path="*" element={<Error404 />} />
 
       </Routes>
       <Footer />

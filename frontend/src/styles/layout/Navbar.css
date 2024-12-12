@@ -1,8 +1,8 @@
 /* Navbar.css */
 
 .navbar {
-  width: 100%; /* Asegura que ocupe todo el ancho */
-  padding: 1rem 2rem; /* Agrega más espacio para que sea proporcional */
+  width: 100%; 
+  padding: 1rem 2rem; 
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -64,17 +64,17 @@
 /* Prevenir estado oscuro en enlaces al hacer clic */
 .navbar-expand-lg .navbar-nav .nav-link:focus,
 .navbar-expand-lg .navbar-nav .nav-link:active {
-  outline: none; /* Elimina el contorno por defecto */
-  color: #f5f5dc; /* Mantiene el color original */
-  background-color: transparent; /* Asegura que no haya cambio de fondo */
+  outline: none; 
+  color: #f5f5dc;
+  background-color: transparent; 
 }
 
 /* Personalización para enlaces de .custom-navbar */
 .custom-navbar .nav-link:focus,
 .custom-navbar .nav-link:active {
-  outline: none; /* Elimina el contorno */
-  color: #2c3e50; /* Mantiene el color base */
-  background-color: transparent; /* Evita fondo oscuro */
+  outline: none; 
+  color: #2c3e50; 
+  background-color: transparent; 
 }
 
 

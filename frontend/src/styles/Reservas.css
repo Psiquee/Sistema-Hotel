@@ -164,7 +164,7 @@ table tbody tr:hover {
 
   thead {
     display: none;
-    /* Oculta encabezados en pantallas pequeñas */
+    
   }
 
   tbody tr {

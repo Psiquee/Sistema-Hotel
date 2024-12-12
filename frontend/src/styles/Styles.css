@@ -24,8 +24,6 @@ h2, .title-list{
 }
 
 
-/* Contenedor de contenido con un desenfoque sutil para mejorar la legibilidad */
-
 .home-container {
   display: flex;
   flex-direction: column;

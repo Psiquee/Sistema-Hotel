@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import useAdd from "../../hooks/useAdd";
 import useEdit from "../../hooks/useEdit";
 import { getReservaPorId } from "../../api/reservacionesApi";
+import { getHuespedes } from "../../api/huespedesApi"; 
+import { getHabitaciones } from "../../api/habitacionesApi";
 import '../../styles/Reservas.css';
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -20,6 +22,8 @@ const ReservacionesForm = () => {
     Estado_reserva: "CONFIRMADO", // defect estado
   });
   const [loading, setLoading] = useState(false);
+  const [huespedes, setHuespedes] = useState([]);
+  const [habitaciones, setHabitaciones] = useState([]);
 
   const { addItem } = useAdd(
     `${API_URL}/reservas`,
@@ -30,7 +34,41 @@ const ReservacionesForm = () => {
     "Reserva actualizada correctamente"
   );
 
+//habitaciones
+  useEffect(() => {
+    setLoading(true);
+  
+    getHabitaciones()
+      .then((data) => {
+        setHabitaciones(data); 
+      })
+      .catch((err) => {
+        console.error("Error al cargar habitaciones:", err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []); 
 
+
+  //huespedes
+  useEffect(() => {
+
+    setLoading(true);
+    getHuespedes()
+      .then((data) => {
+        setHuespedes(data); 
+      })
+      .catch((err) => {
+        console.error("Error al cargar huéspedes:", err);
+      })
+      .finally(() => {
+        setLoading(false); 
+      });
+  }, []);
+  
+
+//reserva
   useEffect(() => {
     if (id) {
       setLoading(true);
@@ -90,23 +128,39 @@ const ReservacionesForm = () => {
 
         <div>
           <label>Id Huésped</label>
-          <input
-            type="text"
-            name="Id_huesped"
-            value={formData.Id_huesped}
-            onChange={handleChange}
-            required
-          />
+          <select
+          name="Id_huesped"
+          value={formData.Id_huesped}
+          onChange={handleChange}
+          required
+        >
+          <option value="">Selecciona un huésped</option>
+          {huespedes.map((huesped) => (
+            <option key={huesped.Id_huesped} value={huesped.Id_huesped}>
+              {huesped.Id_huesped} - {huesped.Nombre} {huesped.Apellido}
+            </option>
+          ))}
+        </select>
         </div>
         <div>
           <label>Id Habitación</label>
-          <input
-            type="text"
-            name="Id_habitacion"
-            value={formData.Id_habitacion}
-            onChange={handleChange}
-            required
-          />
+          <select
+    name="Id_habitacion"
+    value={formData.Id_habitacion}
+    onChange={handleChange}
+    required
+  >
+    <option value="">Selecciona una habitación</option>
+    {habitaciones.length > 0 ? (
+      habitaciones.map((habitacion) => (
+        <option key={habitacion.Id_habitacion} value={habitacion.Id_habitacion}>
+          {habitacion.Id_habitacion} - {habitacion.Tipo_habitacion} ({habitacion.Num_habitacion})
+        </option>
+      ))
+    ) : (
+      <option disabled>No hay habitaciones disponibles</option>
+    )}
+  </select>
         </div>
         <div>
           <label>Fecha Llegada</label>

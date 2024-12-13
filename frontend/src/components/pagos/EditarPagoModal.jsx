@@ -39,6 +39,7 @@ const EditarPagoModal = ({ show, handleClose, pagoId, updatePagoList }) => {
             [name]: value,
         }));
     };
+    
 
     const handleFormSubmit = (e) => {
         e.preventDefault();

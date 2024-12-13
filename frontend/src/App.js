@@ -23,38 +23,129 @@ import Error404 from './components/error404/Error404';
 function App() {
   return (
     <Router>
-      <NavBar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* Rutas con NavBar y Footer */}
+        <Route 
+          path="/" 
+          element={
+            <>
+              <NavBar />
+              <Home />
+              <Footer />
+            </>
+          } 
+        />
 
-        <Route path="/guests" element={<HuespedesList />} />
-        <Route path="/add-guest" element={<HuespedesForm />} />
+        <Route 
+          path="/guests" 
+          element={
+            <>
+              <NavBar />
+              <HuespedesList />
+              <Footer />
+            </>
+          } 
+        />
+        <Route 
+          path="/add-guest" 
+          element={
+            <>
+              <NavBar />
+              <HuespedesForm />
+              <Footer />
+            </>
+          } 
+        />
 
-        <Route path="/employees" element={<EmpleadosList />} />
-        <Route path="/add-employee" element={<EmpleadosForm />} />
-        <Route path="/add-employee?id=:id" element={<EmpleadosForm />} />
+        <Route 
+          path="/employees" 
+          element={
+            <>
+              <NavBar />
+              <EmpleadosList />
+              <Footer />
+            </>
+          } 
+        />
+        <Route 
+          path="/add-employee" 
+          element={
+            <>
+              <NavBar />
+              <EmpleadosForm />
+              <Footer />
+            </>
+          } 
+        />
+        <Route 
+          path="/reservations" 
+          element={
+            <>
+              <NavBar />
+              <ReservacionesList />
+              <Footer />
+            </>
+          } 
+        />
+        <Route 
+          path="/add-reservation" 
+          element={
+            <>
+              <NavBar />
+              <ReservacionesForm />
+              <Footer />
+            </>
+          } 
+        />
 
+        <Route 
+          path="/payments" 
+          element={
+            <>
+              <NavBar />
+              <PagosList />
+              <Footer />
+            </>
+          } 
+        />
+        <Route 
+          path="/add-payment" 
+          element={
+            <>
+              <NavBar />
+              <PagosForm />
+              <Footer />
+            </>
+          } 
+        />
 
-        <Route path="/reservations" element={<ReservacionesList />} />
-        <Route path="/add-reservation" element={<ReservacionesForm />} />
+        <Route 
+          path="/rooms" 
+          element={
+            <>
+              <NavBar />
+              <HabitacionesList />
+              <Footer />
+            </>
+          } 
+        />
+        <Route 
+          path="/add-room" 
+          element={
+            <>
+              <NavBar />
+              <HabitacionesForm />
+              <Footer />
+            </>
+          } 
+        />
 
-
-        <Route path="/payments" element={<PagosList />} />
-        <Route path="/add-payment" element={<PagosForm />} />
-
-
-        <Route path="/rooms" element={<HabitacionesList />} />
-        <Route path="/add-room" element={<HabitacionesForm />} />
-
-        {/* Ruta para páginas no encontradas */}
+        {/* Ruta de error 404 sin NavBar ni Footer */}
         <Route path="*" element={<Error404 />} />
-
       </Routes>
-      <Footer />
     </Router>
   );
 }
 
 export default App;
-
 

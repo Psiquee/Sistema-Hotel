@@ -24,6 +24,15 @@ Para ejecutar el proyecto localmente, sigue estos pasos:
    git clone <URL_DEL_REPOSITORIO>
    ```
 
+
+## .env
+Deberás crear en la carpeta frontend un archivo de conexion con el nombre **".env"** donde incluirás las siguientes variables con tu informacion local o url de tu api desplegada:
+```javascript
+REACT_APP_API_URL=http://localhost:3001/api
+
+```
+
+
 ## Estructura del Proyecto
 El proyecto está organizado en las siguientes secciones:
 
@@ -56,4 +65,7 @@ El proyecto está organizado en las siguientes secciones:
 - **JavaScript**: Interactividad y gestión.
 - **Font Awesome**: Iconos y fuentes. [Documentación de Font Awesome](https://fontawesome.com/)
 - **SweetAlert2**   [Documentacion de SweetAlert](https://sweetalert2.github.io/)
+- **Vercel**: Deploy del frontend [Documentacion de Vercel](https://vercel.com/docs) 
+- **Railway**:  Deploy del servidor y base de datos [Documentacion de Railway](https://docs.railway.com/)
+  
 

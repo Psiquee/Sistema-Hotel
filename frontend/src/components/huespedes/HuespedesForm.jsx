@@ -113,6 +113,7 @@ const HuespedesForm = () => {
                         placeholder="Dirección"
                         value={huesped.Direccion}
                         onChange={handleChange}
+                        required
                     />
                 </div>
                 <div>
@@ -123,6 +124,7 @@ const HuespedesForm = () => {
                         placeholder="Teléfono"
                         value={huesped.Telefono}
                         onChange={handleChange}
+                        required
                     />
                 </div>
                 <div className="email-container">

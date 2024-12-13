@@ -92,6 +92,7 @@ const HabitacionForm = () => {
                         name="Num_habitacion"
                         value={habitacion.Num_habitacion}
                         onChange={handleChange}
+                        required
                     />
                 </div>
                 <div>
@@ -100,6 +101,7 @@ const HabitacionForm = () => {
                         name="Tipo_habitacion"
                         value={habitacion.Tipo_habitacion}
                         onChange={handleChange}
+                        required
                     >
                         <option value="Simple">Simple</option>
                         <option value="Doble">Doble</option>
@@ -114,6 +116,7 @@ const HabitacionForm = () => {
                         name="Precio_noche"
                         value={habitacion.Precio_noche}
                         onChange={handleChange}
+                        required
                     />
                 </div>
                 <div>
@@ -122,6 +125,7 @@ const HabitacionForm = () => {
                         name="Estado"
                         value={habitacion.Estado}
                         onChange={handleChange}
+                        required
                     >
                         <option value="Disponible">Disponible</option>
                         <option value="Ocupada">Ocupada</option>

@@ -186,6 +186,7 @@ const PagosForm = () => {
           name="Metodo_pago"
           value={formData.Metodo_pago}
           onChange={handleChange}
+          required
         >
           <option value="EFECTIVO">Efectivo</option>
           <option value="DÉBITO">Débito</option>

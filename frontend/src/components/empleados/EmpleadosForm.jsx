@@ -91,6 +91,7 @@ const EmpleadosForm = () => {
                         name="Nombre"
                         value={employee.Nombre}
                         onChange={handleChange}
+                        required
                     />
                 </div>
                 <div>
@@ -100,6 +101,7 @@ const EmpleadosForm = () => {
                         name="Apellido"
                         value={employee.Apellido}
                         onChange={handleChange}
+                        required
                     />
                 </div>
                 <div>
@@ -109,6 +111,7 @@ const EmpleadosForm = () => {
                         name="Cargo"
                         value={employee.Cargo}
                         onChange={handleChange}
+                        required
                     />
                 </div>
                 <div>
@@ -118,6 +121,7 @@ const EmpleadosForm = () => {
                         name="Telefono"
                         value={employee.Telefono}
                         onChange={handleChange}
+                        required
                     />
                 </div>
                 <div className="email-container">
@@ -127,6 +131,7 @@ const EmpleadosForm = () => {
                         name="Email"
                         value={employee.Email}
                         onChange={handleChange}
+                        required
                     />
                 </div>
                 <div className="button-container">
